@@ -2,8 +2,8 @@ terragrunt = {
   remote_state {
     backend = "gcs"
     config {
-      bucket  = "${get_env("ENV", "default")}-forseti-terraform-states"
-      prefix  = "${get_env("ENV", "default")}-components/core-admin/project"
+      bucket  = "${get_env("TF_VAR_ENV", "default")}-forseti-terraform-states"
+      prefix  = "${get_env("TF_VAR_ENV", "default")}-components/core-admin/project"
       credentials = "${get_env("GOOGLE_APPLICATION_CREDENTIALS", "default")}"
       project = "${get_env("GOOGLE_PROJECT", "terraform-org-admin")}"
     }
