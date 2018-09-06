@@ -7,3 +7,7 @@ terraform {
 
   backend "gcs" {}
 }
+
+data "google_project" "terraform_admin" {
+  project_id = "${var.terraform_admin_project_id}"
+}

@@ -3,7 +3,7 @@ terragrunt = {
     backend = "gcs"
     config {
       bucket  = "${get_env("TF_VAR_ENV", "default")}-forseti-terraform-states"
-      prefix  = "components/cloud-storage"
+      prefix  = "components/terraform-admin"
       credentials = "${get_env("GOOGLE_APPLICATION_CREDENTIALS", "default")}"
       project = "${get_env("GOOGLE_PROJECT", "terraform-org-admin")}"
     }
@@ -26,8 +26,8 @@ terragrunt = {
 
       arguments = [
         "-lock-timeout=30s",
-        "--var-file=${get_tfvars_dir()}/../../envars/common.tfvars",
-        "--var-file=${get_tfvars_dir()}/../../envars/${get_env("ENV", "default")}.tfvars",
+        "--var-file=${get_tfvars_dir()}/../../../envars/common.tfvars",
+        "--var-file=${get_tfvars_dir()}/../../../envars/${get_env("TF_VAR_ENV", "default")}.tfvars",
         "--var-file=terraform.tfvars"
       ]
     }

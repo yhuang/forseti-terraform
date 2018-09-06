@@ -46,7 +46,17 @@ service_accounts = {
   "terraform-admin"        = "terraform-service-user@terraform-org-admin.iam.gserviceaccount.com"
 }
 
-project_names = {
-  "forseti-security" = "forseti-security"
-  "terraform-admin"  = "terraform-org-admin"
+iam_roles = {
+  "appengine-appViewer"           = "roles/appengine.appViewer"
+  "bigquery-dataViewer"           = "roles/bigquery.dataViewer"
+  "browser"                       = "roles/browser"
+  "cloudsql-client"               = "roles/cloudsql.client"
+  "cloudsql-viewer"               = "roles/cloudsql.viewer"
+  "compute-networkViewer"         = "roles/compute.networkViewer"
+  "compute-securityAdmin"         = "roles/compute.securityAdmin"
+  "iam-securityReviewer"          = "roles/iam.securityReviewer"
+  "logging-logWriter"             = "roles/logging.logWriter"
+  "storage-objectCreator"         = "roles/storage.objectCreator"
+  "storage-objectViewer"          = "roles/storage.objectViewer"
+  "servicemanagement-quotaViewer" = "roles/servicemanagement.quotaViewer"
 }
