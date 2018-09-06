@@ -8,3 +8,7 @@
 # .tfstate files
 *.tfstate
 *.tfstate.*
+
+**/builds
+**/*.box
+**/.vagrant/*
