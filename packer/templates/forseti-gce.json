@@ -1,0 +1,65 @@
+{
+  "variables": {
+    "box_basename": "forseti",
+    "ssh_username": "centos",
+    "ssh_password": "{{env `PASSWORD`}}",
+    "build_timestamp": "{{isotime \"20060102-1504\"}}",
+    "user_home_dir": "/home/centos",
+    "forseti_version": "2.2.0",
+    "source_image": "centos-7-v20180815",
+    "project_id": "{{env `GOOGLE_PROJECT`}}",
+    "zone": "us-west1-a"
+  },
+  "builders": [
+    {
+      "type": "googlecompute",
+      "machine_type": "f1-micro",
+      "disk_size": "10",
+      "disk_type": "pd-standard",
+      "project_id": "{{user `project_id`}}",
+      "source_image": "{{user `source_image`}}",
+      "image_name": "forseti-centos7-v{{isotime \"20060102-1504\"}}",
+      "zone": "{{user `zone`}}",
+      "ssh_username": "{{user `ssh_username`}}",
+      "ssh_pty": true,
+      "network": "default"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "expect_disconnect": true,
+      "pause_before": "10s",
+      "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "inline": [
+        "yum -y update",
+        "reboot"
+      ]
+    },
+    {
+      "type": "shell",
+      "expect_disconnect": true,
+      "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "inline": [ "sleep 60" ]
+    },
+    {
+      "type": "file",
+      "source": "files/requirements.txt",
+      "destination": "/tmp/requirements.txt"
+    },
+    {
+      "type": "shell",
+      "environment_vars": [
+        "FORSETI_VERSION={{user `forseti_version`}}"
+      ],
+      "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "scripts": [
+        "provisioning-scripts/install-forseti-dependencies.sh",
+        "provisioning-scripts/install-git.sh",
+        "provisioning-scripts/install-google-cloud-sdk.sh",
+        "provisioning-scripts/install-forseti.sh",
+        "provisioning-scripts/clean-up.sh"
+      ]
+    }
+  ]
+}
