@@ -26,6 +26,8 @@ availability_zones = [
   "us-west1-c",
 ]
 
+byte_length = 4
+
 forseti_roles = {
   "client"                 = "client"
   "server"                 = "server"

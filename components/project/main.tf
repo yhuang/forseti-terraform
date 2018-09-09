@@ -1,7 +1,7 @@
 provider "random" {}
 
 resource "random_id" "string" {
-  byte_length = 4
+  byte_length = "${var.byte_length}"
 }
 
 resource "google_project" "forseti_security" {

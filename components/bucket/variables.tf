@@ -1,4 +1,4 @@
-variable "bucket_policy" {
+`variable "bucket_policy" {
   type = "map"
 }
 
