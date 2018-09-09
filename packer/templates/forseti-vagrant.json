@@ -3,7 +3,6 @@
     "box_basename": "forseti",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
-    "build_timestamp": "{{isotime \"20060102-1504\"}}",
     "user_home_dir": "/home/vagrant",
     "forseti_version": "2.2.0"
   },
@@ -17,8 +16,8 @@
       "boot_wait": "10s",
       "headless": true,
       "http_directory": ".",
-      "source_path": "builds/centos7/centos7.vmx",
-      "output_directory": "builds/{{ user `box_basename` }}",
+      "source_path": "builds/base/base.vmx",
+      "output_directory": "{{ user `box_basename` }}",
       "shutdown_command": "echo {{user `ssh_password`}} | sudo -S /sbin/halt -h -p",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
@@ -36,7 +35,7 @@
       "type": "shell",
       "expect_disconnect": true,
       "pause_before": "10s",
-      "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "execute_command": "echo \"{{user `ssh_password`}}\" | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "inline": [
         "yum -y update",
         "reboot"
@@ -45,7 +44,7 @@
     {
       "type": "shell",
       "expect_disconnect": true,
-      "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "execute_command": "echo \"{{user `ssh_password`}}\" | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "inline": [ "sleep 60" ]
     },
     {
@@ -56,14 +55,17 @@
     {
       "type": "shell",
       "environment_vars": [
+        "USER={{user `ssh_username`}}",
         "FORSETI_VERSION={{user `forseti_version`}}"
       ],
-      "execute_command": "echo {{user `ssh_password`}} | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "execute_command": "echo \"{{user `ssh_password`}}\" | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
         "provisioning-scripts/install-forseti-dependencies.sh",
         "provisioning-scripts/install-git.sh",
         "provisioning-scripts/install-google-cloud-sdk.sh",
         "provisioning-scripts/install-forseti.sh",
+        "provisioning-scripts/configure-forseti-logrotate.sh",
+        "provisioning-scripts/install-cloud-sql-proxy.sh",
         "provisioning-scripts/clean-up.sh"
       ]
     }

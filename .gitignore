@@ -12,3 +12,6 @@
 **/builds
 **/*.box
 **/.vagrant/*
+**/iso
+
+packer/http/ks.cfg

@@ -1,5 +1,24 @@
-regions = [
-  "us-west1",
+apis = [
+  "admin.googleapis.com",
+  "appengine.googleapis.com",
+  "bigquery-json.googleapis.com",
+  "cloudbilling.googleapis.com",
+  "cloudresourcemanager.googleapis.com",
+  "deploymentmanager.googleapis.com",
+  "iam.googleapis.com",
+  "serviceusage.googleapis.com",
+  "sql-component.googleapis.com",
+  "sqladmin.googleapis.com",
+  "storage-api.googleapis.com",
+
+  "compute.googleapis.com",
+  "container.googleapis.com",
+  "containerregistry.googleapis.com",
+  "oslogin.googleapis.com",
+  "pubsub.googleapis.com",
+  "replicapool.googleapis.com",
+  "replicapoolupdater.googleapis.com",
+  "resourceviews.googleapis.com",
 ]
 
 availability_zones = [
@@ -7,27 +26,33 @@ availability_zones = [
   "us-west1-c",
 ]
 
-# The Terraform Admin service account will need to have the following predefined organization roles:
-#
-#   - Billing Account User
-#   - Organization Role Administrator
-#   - Organization Policy Administrator
-#   - Organization Administrator
-#   - Project Creator
-#   - Project Deleter
-#   - Service Management Administrator
-#   - Quota Administrator
-#
-# The Terraform Admin servic account will need to have the following predefined project roles:
-#
-#   - Viewer
-#   - Storage Admin
-
 forseti_roles = {
-  "auditor"                = "auditor"
-  "enforcer"               = "enforcer"
-  "explainer"              = "explainer"
+  "client"                 = "client"
+  "server"                 = "server"
   "g-suite-groupd-auditor" = "g-suite-groupd-auditor"
+}
+
+project_name = "forseti-security"
+
+regions = [
+  "us-west1",
+]
+
+iam_roles = {
+  "appengine-appViewer"               = "roles/appengine.appViewer"
+  "bigquery-dataViewer"               = "roles/bigquery.dataViewer"
+  "browser"                           = "roles/browser"
+  "cloudsql-client"                   = "roles/cloudsql.client"
+  "cloudsql-viewer"                   = "roles/cloudsql.viewer"
+  "compute-networkViewer"             = "roles/compute.networkViewer"
+  "compute-securityAdmin"             = "roles/compute.securityAdmin"
+  "iam-serviceAccountTokenCreator"    = "roles/iam.serviceAccountTokenCreator"
+  "iam-securityReviewer"              = "roles/iam.securityReviewer"
+  "logging-logWriter"                 = "roles/logging.logWriter"
+  "storage-objectCreator"             = "roles/storage.objectCreator"
+  "storage-objectViewer"              = "roles/storage.objectViewer"
+  "servicemanagement-quotaViewer"     = "roles/servicemanagement.quotaViewer"
+  "serviceusage-serviceUsageConsumer" = "roles/serviceusage.serviceUsageConsumer"
 }
 
 # https://forsetisecurity.org/docs/howto/configure/gsuite-group-collection.html
@@ -46,17 +71,6 @@ service_accounts = {
   "terraform-admin"        = "terraform-service-user@terraform-org-admin.iam.gserviceaccount.com"
 }
 
-iam_roles = {
-  "appengine-appViewer"           = "roles/appengine.appViewer"
-  "bigquery-dataViewer"           = "roles/bigquery.dataViewer"
-  "browser"                       = "roles/browser"
-  "cloudsql-client"               = "roles/cloudsql.client"
-  "cloudsql-viewer"               = "roles/cloudsql.viewer"
-  "compute-networkViewer"         = "roles/compute.networkViewer"
-  "compute-securityAdmin"         = "roles/compute.securityAdmin"
-  "iam-securityReviewer"          = "roles/iam.securityReviewer"
-  "logging-logWriter"             = "roles/logging.logWriter"
-  "storage-objectCreator"         = "roles/storage.objectCreator"
-  "storage-objectViewer"          = "roles/storage.objectViewer"
-  "servicemanagement-quotaViewer" = "roles/servicemanagement.quotaViewer"
+source_image = {
+  "centos7" = "centos-7-v20180815"
 }

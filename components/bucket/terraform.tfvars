@@ -1,11 +1,14 @@
 terragrunt = {
+  dependencies {
+    paths = ["../project"]
+  }
   remote_state {
     backend = "gcs"
     config {
-      bucket  = "${get_env("TF_VAR_ENV", "default")}-forseti-terraform-states"
-      prefix  = "components/cloud-storage"
+      bucket  = "${get_env("TF_VAR_environment", "default")}-forseti-security-terraform-states"
+      prefix  = "components/bucket"
       credentials = "${get_env("GOOGLE_APPLICATION_CREDENTIALS", "default")}"
-      project = "${get_env("GOOGLE_PROJECT", "terraform-org-admin")}"
+      project = "${get_env("TF_VAR_terraform_admin_project_id", "terraform-org-admin")}"
     }
   }
 
@@ -22,12 +25,13 @@ terragrunt = {
         "refresh",
         "taint",
         "untaint",
+        "validate",
       ]
 
       arguments = [
         "-lock-timeout=30s",
         "--var-file=${get_tfvars_dir()}/../../envars/common.tfvars",
-        "--var-file=${get_tfvars_dir()}/../../envars/${get_env("ENV", "default")}.tfvars",
+        "--var-file=${get_tfvars_dir()}/../../envars/${get_env("TF_VAR_environment", "default")}.tfvars",
         "--var-file=terraform.tfvars"
       ]
     }
