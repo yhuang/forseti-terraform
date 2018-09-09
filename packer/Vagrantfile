@@ -12,6 +12,8 @@ Vagrant.configure(2) do |config|
   config.vm.box = name
 
   config.vm.define name
+  config.ssh.username = "centos"
+  config.ssh.password = ENV['PASSWORD']
 
   config.vm.provider 'vmware_fusion' do |vmware|
     vmware.gui = false
@@ -20,7 +22,7 @@ Vagrant.configure(2) do |config|
     vmware.whitelist_verified = true
   end
 
-  config.vm.synced_folder ENV['HOME'].to_s, '/host-data'
+  config.vm.synced_folder '.', '/vagrant', disabled: true
   config.ssh.insert_key = false
 
   # Disable automatic box update checking. If you disable this, then
