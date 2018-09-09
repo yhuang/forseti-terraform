@@ -2,6 +2,8 @@ variable "apis" {
   type = "list"
 }
 
+variable "byte_length" {}
+
 variable "environment" {}
 
 variable "forseti_roles" {
