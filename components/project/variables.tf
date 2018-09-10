@@ -4,6 +4,7 @@ variable "apis" {
 
 variable "byte_length" {}
 
+# export TF_VAR_environment
 variable "environment" {}
 
 variable "forseti_roles" {
@@ -14,10 +15,11 @@ variable "iam_roles" {
   type = "map"
 }
 
-variable "project_name" {}
+variable "project_name_base" {}
 
 variable "regions" {
   type = "list"
 }
 
+# export TF_VAR_terraform_admin_project_id
 variable "terraform_admin_project_id" {}

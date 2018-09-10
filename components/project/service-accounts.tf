@@ -1,12 +1,4 @@
 # https://forsetisecurity.org/docs/guides/forseti-service-accounts.html
-locals {
-  org_id                    = "${google_project.forseti_security.org_id}"
-  project_id                = "${google_project.forseti_security.project_id}"
-  server_service_account    = "${google_service_account.server.email}"
-  client_service_account    = "${google_service_account.client.email}"
-  server_service_account_id = "projects/${local.project_id}/serviceAccounts/${local.server_service_account}"
-}
-
 resource "google_service_account" "server" {
   account_id = "${var.forseti_roles["server"]}"
   project    = "${local.project_id}"

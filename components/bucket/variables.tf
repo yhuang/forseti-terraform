@@ -1,7 +1,8 @@
-`variable "bucket_policy" {
+variable "bucket_policy" {
   type = "map"
 }
 
+# export TF_VAR_environment
 variable "environment" {}
 
 variable "regions" {

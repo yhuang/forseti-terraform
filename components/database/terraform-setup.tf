@@ -2,6 +2,8 @@ provider "google" {
   region = "${var.regions[0]}"
 }
 
+provider "random" {}
+
 terraform {
   required_version = ">= 0.11.8"
 

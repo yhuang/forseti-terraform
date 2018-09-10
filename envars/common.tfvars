@@ -22,11 +22,15 @@ apis = [
 ]
 
 availability_zones = [
-  "us-west1-b",
-  "us-west1-c",
+  "us-central1-b",
+  "us-central1-c",
 ]
 
 byte_length = 4
+
+cloudsql_database_user_name = "centos"
+
+cloudsql_database_port      = 3306
 
 forseti_roles = {
   "client"                 = "client"
@@ -34,10 +38,10 @@ forseti_roles = {
   "g-suite-groupd-auditor" = "g-suite-groupd-auditor"
 }
 
-project_name = "forseti-security"
+project_name_base = "forseti-security"
 
 regions = [
-  "us-west1",
+  "us-central1",
 ]
 
 iam_roles = {
@@ -55,6 +59,10 @@ iam_roles = {
   "storage-objectViewer"              = "roles/storage.objectViewer"
   "servicemanagement-quotaViewer"     = "roles/servicemanagement.quotaViewer"
   "serviceusage-serviceUsageConsumer" = "roles/serviceusage.serviceUsageConsumer"
+}
+
+scopes = {
+  "all-api-access" = "https://www.googleapis.com/auth/cloud-platform"
 }
 
 # https://forsetisecurity.org/docs/howto/configure/gsuite-group-collection.html

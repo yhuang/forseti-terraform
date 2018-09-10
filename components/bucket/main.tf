@@ -1,10 +1,11 @@
 resource "google_storage_bucket" "forseti_security_bucket" {
-  name          = "${data.terraform_remote_state.project.project_id}"
-  project       = "${data.terraform_remote_state.project.project_id}"
+  force_destroy = "${var.bucket_policy["force-destroy"]}"
   location      = "${var.bucket_policy["location"]}"
-  storage_class = "${var.bucket_policy["storage_class"]}"
+  name          = "${local.project_id}"
+  project       = "${local.project_id}"
+  storage_class = "${var.bucket_policy["storage-class"]}"
+
   versioning    {
     enabled = "${var.bucket_policy["versioning"]}"
   }
-  force_destroy = "${var.bucket_policy["force_destroy"]}"
 }
