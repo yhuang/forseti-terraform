@@ -27,6 +27,6 @@ cloudsql_settings = {
   "tier"              = "db-f1-micro"
 }
 
-source_image = {
-  "centos7" = "centos-7-v20180815"
-}
+image = "forseti-centos7-v20180909-0943"
+
+machine_type = "f1-micro"

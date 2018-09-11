@@ -9,3 +9,11 @@ output "project_name" {
 output "project_number" {
   value = "${google_project.forseti_security.number}"
 }
+
+output "server_service_account" {
+  value = "${google_service_account.server.email}"
+}
+
+output "client_service_account" {
+  value = "${google_service_account.client.email}"
+}

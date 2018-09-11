@@ -38,12 +38,6 @@ forseti_roles = {
   "g-suite-groupd-auditor" = "g-suite-groupd-auditor"
 }
 
-project_name_base = "forseti-security"
-
-regions = [
-  "us-central1",
-]
-
 iam_roles = {
   "appengine-appViewer"               = "roles/appengine.appViewer"
   "bigquery-dataViewer"               = "roles/bigquery.dataViewer"
@@ -60,6 +54,12 @@ iam_roles = {
   "servicemanagement-quotaViewer"     = "roles/servicemanagement.quotaViewer"
   "serviceusage-serviceUsageConsumer" = "roles/serviceusage.serviceUsageConsumer"
 }
+
+project_name_base = "forseti-security"
+
+regions = [
+  "us-central1",
+]
 
 scopes = {
   "all-api-access" = "https://www.googleapis.com/auth/cloud-platform"
@@ -79,8 +79,4 @@ scopes = {
 service_accounts = {
   "g-suite-groups-auditor" = "g-suite-groups-auditor@terraform-org-admin.iam.gserviceaccount.com"
   "terraform-admin"        = "terraform-service-user@terraform-org-admin.iam.gserviceaccount.com"
-}
-
-source_image = {
-  "centos7" = "centos-7-v20180815"
 }
