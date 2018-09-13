@@ -2,16 +2,8 @@
 .idea/*
 .DS_Store
 
-#  Local .terraform directories
 **/.terraform/*
 
 # .tfstate files
 *.tfstate
 *.tfstate.*
-
-**/builds
-**/*.box
-**/.vagrant/*
-**/iso
-
-packer/http/ks.cfg
