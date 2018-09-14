@@ -1,5 +1,5 @@
-resource "google_compute_instance" "server" {
-  name         = "${local.server_name}"
+resource "google_compute_instance" "client" {
+  name         = "${local.client_name}"
   machine_type = "${var.machine_type}"
   zone         = "${var.availability_zones[0]}"
 
@@ -15,7 +15,7 @@ resource "google_compute_instance" "server" {
   }
 
   service_account {
-    email = "${local.server_service_account}"
+    email = "${local.client_service_account}"
 
     scopes = [
       "${var.scopes["all-api-access"]}",

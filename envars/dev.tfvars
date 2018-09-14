@@ -27,6 +27,8 @@ cloudsql_settings = {
   "tier"              = "db-f1-micro"
 }
 
-image = "forseti-centos7-v20180909-0943"
+image_family = "forseti-security"
 
 machine_type = "f1-micro"
+
+subnetwork = "default"

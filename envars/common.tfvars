@@ -30,7 +30,9 @@ byte_length = 4
 
 cloudsql_database_user_name = "centos"
 
-cloudsql_database_port      = 3306
+cloudsql_database_port = 3306
+
+cloudsql_proxy = "/usr/local/bin/cloudsql-proxy"
 
 forseti_roles = {
   "client"                 = "client"
