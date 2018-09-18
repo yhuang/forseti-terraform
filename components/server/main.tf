@@ -21,4 +21,8 @@ resource "google_compute_instance" "server" {
       "${var.scopes["all-api-access"]}",
     ]
   }
+
+  metadata {
+    startup-script = "${data.template_file.configure_forseti_services.rendered}"
+  }
 }

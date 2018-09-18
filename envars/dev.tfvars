@@ -12,8 +12,6 @@ cloudsql_backup_configuration = {
   "enabled"            = false
 }
 
-cloudsql_database_version = "MYSQL_5_7"
-
 cloudsql_ip_configuration = {
   "ipv4-enabled" = true
   "require-ssl"  = true
@@ -27,7 +25,13 @@ cloudsql_settings = {
   "tier"              = "db-f1-micro"
 }
 
-image_family = "forseti-security"
+forseti_security_services = [
+  "explain",
+  "inventory",
+  "model",
+  "notifier",
+  "scanner",
+]
 
 machine_type = "f1-micro"
 

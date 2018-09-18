@@ -28,11 +28,11 @@ availability_zones = [
 
 byte_length = 4
 
-cloudsql_database_user_name = "centos"
-
 cloudsql_database_port = 3306
 
-cloudsql_proxy = "/usr/local/bin/cloudsql-proxy"
+cloudsql_database_user_name = "forseti"
+
+cloudsql_database_version = "MYSQL_5_7"
 
 forseti_roles = {
   "client"                 = "client"
@@ -56,6 +56,8 @@ iam_roles = {
   "servicemanagement-quotaViewer"     = "roles/servicemanagement.quotaViewer"
   "serviceusage-serviceUsageConsumer" = "roles/serviceusage.serviceUsageConsumer"
 }
+
+os = "centos"
 
 project_name_base = "forseti-security"
 
@@ -81,4 +83,10 @@ scopes = {
 service_accounts = {
   "g-suite-groups-auditor" = "g-suite-groups-auditor@terraform-org-admin.iam.gserviceaccount.com"
   "terraform-admin"        = "terraform-service-user@terraform-org-admin.iam.gserviceaccount.com"
+}
+
+software = {
+  "cloudsql-proxy" = "/usr/bin/cloudsql-proxy"
+  "forseti-enforcer" = "/usr/bin/forseti-enforcer"
+  "forseti-server" = "/usr/bin/forseti-server"
 }
