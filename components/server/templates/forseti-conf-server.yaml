@@ -2,9 +2,9 @@ global:
 
     # Remove or comment out the email properties if you do not want Forseti to
     # send email notifications.
-    email_recipient: {EMAIL_RECIPIENT}
-    email_sender: {EMAIL_SENDER}
-    sendgrid_api_key: {SENDGRID_API_KEY}
+    email_recipient: ${email_recipient}
+    email_sender: ${email_sender}
+    sendgrid_api_key: ${sendgrid_api_key}
 
 ##############################################################################
 
@@ -70,7 +70,7 @@ scanner:
     # Output path (do not include filename).
     # If GCS location, the format of the path should be:
     # gs://bucket-name/path/for/output
-    output_path: gs://{FORSETI_BUCKET}/scanner_violations
+    output_path: gs://${forseti_security_bucket}/scanner_violations
 
     # Rules path (do not include filename).
     # If GCS location, the format of the path should be:
@@ -127,15 +127,15 @@ notifier:
             - name: email_violations
               configuration:
                 data_format: csv
-                sendgrid_api_key: {SENDGRID_API_KEY}
-                sender: {EMAIL_SENDER}
-                recipient: {EMAIL_RECIPIENT}
+                sendgrid_api_key: ${sendgrid_api_key}
+                sender: ${email_sender}
+                recipient: ${email_recipient}
             # Upload violations to GCS.
             - name: gcs_violations
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://{FORSETI_BUCKET}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner_violations
             # Slack webhook pipeline.
             # Create an incoming webhook in your organization's Slack setting, located at:
             # https://[your_org].slack.com/apps/manage/custom-integrations
@@ -151,15 +151,15 @@ notifier:
             # Email violations
             - name: email_violations
               configuration:
-                sendgrid_api_key: {SENDGRID_API_KEY}
-                sender: {EMAIL_SENDER}
-                recipient: {EMAIL_RECIPIENT}
+                sendgrid_api_key: ${sendgrid_api_key}
+                sender: ${email_sender}
+                recipient: ${email_recipient}
             # Upload violations to GCS.
             - name: gcs_violations
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://{FORSETI_BUCKET}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner_violations
 
         - resource: blacklist_violations
           should_notify: true
@@ -167,15 +167,15 @@ notifier:
             # Email violations
             - name: email_violations
               configuration:
-                sendgrid_api_key: {SENDGRID_API_KEY}
-                sender: {EMAIL_SENDER}
-                recipient: {EMAIL_RECIPIENT}
+                sendgrid_api_key: ${sendgrid_api_key}
+                sender: ${email_sender}
+                recipient: ${email_recipient}
             # Upload violations to GCS.
             - name: gcs_violations
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://{FORSETI_BUCKET}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner_violations
 
         - resource: bigquery_acl_violations
           should_notify: true
@@ -183,15 +183,15 @@ notifier:
             # Email violations
             - name: email_violations
               configuration:
-                sendgrid_api_key: {SENDGRID_API_KEY}
-                sender: {EMAIL_SENDER}
-                recipient: {EMAIL_RECIPIENT}
+                sendgrid_api_key: ${sendgrid_api_key}
+                sender: ${email_sender}
+                recipient: ${email_recipient}
             # Upload violations to GCS.
             - name: gcs_violations
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://{FORSETI_BUCKET}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner_violations
 
         - resource: buckets_acl_violations
           should_notify: true
@@ -199,15 +199,15 @@ notifier:
             # Email violations
             - name: email_violations
               configuration:
-                sendgrid_api_key: {SENDGRID_API_KEY}
-                sender: {EMAIL_SENDER}
-                recipient: {EMAIL_RECIPIENT}
+                sendgrid_api_key: ${sendgrid_api_key}
+                sender: ${email_sender}
+                recipient: ${email_recipient}
             # Upload violations to GCS.
             - name: gcs_violations
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://{FORSETI_BUCKET}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner_violations
 
         - resource: cloudsql_acl_violations
           should_notify: true
@@ -215,15 +215,15 @@ notifier:
             # Email violations
             - name: email_violations
               configuration:
-                sendgrid_api_key: {SENDGRID_API_KEY}
-                sender: {EMAIL_SENDER}
-                recipient: {EMAIL_RECIPIENT}
+                sendgrid_api_key: ${sendgrid_api_key}
+                sender: ${email_sender}
+                recipient: ${email_recipient}
             # Upload violations to GCS.
             - name: gcs_violations
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://{FORSETI_BUCKET}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner_violations
 
         - resource: enabled_apis_violations
           should_notify: true
@@ -231,15 +231,15 @@ notifier:
             # Email violations
             - name: email_violations
               configuration:
-                sendgrid_api_key: {SENDGRID_API_KEY}
-                sender: {EMAIL_SENDER}
-                recipient: {EMAIL_RECIPIENT}
+                sendgrid_api_key: ${sendgrid_api_key}
+                sender: ${email_sender}
+                recipient: ${email_recipient}
             # Upload violations to GCS.
             - name: gcs_violations
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://{FORSETI_BUCKET}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner_violations
 
         - resource: firewall_rule_violations
           should_notify: true
@@ -247,15 +247,15 @@ notifier:
             # Email violations
             - name: email_violations
               configuration:
-                sendgrid_api_key: {SENDGRID_API_KEY}
-                sender: {EMAIL_SENDER}
-                recipient: {EMAIL_RECIPIENT}
+                sendgrid_api_key: ${sendgrid_api_key}
+                sender: ${email_sender}
+                recipient: ${email_recipient}
             # Upload violations to GCS.
             - name: gcs_violations
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://{FORSETI_BUCKET}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner_violations
 
         - resource: forwarding_rule_violations
           should_notify: true
@@ -263,15 +263,15 @@ notifier:
             # Email violations
             - name: email_violations
               configuration:
-                sendgrid_api_key: {SENDGRID_API_KEY}
-                sender: {EMAIL_SENDER}
-                recipient: {EMAIL_RECIPIENT}
+                sendgrid_api_key: ${sendgrid_api_key}
+                sender: ${email_sender}
+                recipient: ${email_recipient}
             # Upload violations to GCS.
             - name: gcs_violations
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://{FORSETI_BUCKET}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner_violations
 
         - resource: ke_version_violations
           should_notify: true
@@ -279,15 +279,15 @@ notifier:
             # Email violations
             - name: email_violations
               configuration:
-                sendgrid_api_key: {SENDGRID_API_KEY}
-                sender: {EMAIL_SENDER}
-                recipient: {EMAIL_RECIPIENT}
+                sendgrid_api_key: ${sendgrid_api_key}
+                sender: ${email_sender}
+                recipient: ${email_recipient}
             # Upload violations to GCS.
             - name: gcs_violations
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://{FORSETI_BUCKET}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner_violations
 
         - resource: groups_violations
           should_notify: true
@@ -295,15 +295,15 @@ notifier:
             # Email violations
             - name: email_violations
               configuration:
-                sendgrid_api_key: {SENDGRID_API_KEY}
-                sender: {EMAIL_SENDER}
-                recipient: {EMAIL_RECIPIENT}
+                sendgrid_api_key: ${sendgrid_api_key}
+                sender: ${email_sender}
+                recipient: ${email_recipient}
             # Upload violations to GCS.
             - name: gcs_violations
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://{FORSETI_BUCKET}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner_violations
 
         - resource: instance_network_interface_violations
           should_notify: true
@@ -311,15 +311,15 @@ notifier:
             # Email violations
             - name: email_violations
               configuration:
-                sendgrid_api_key: {SENDGRID_API_KEY}
-                sender: {EMAIL_SENDER}
-                recipient: {EMAIL_RECIPIENT}
+                sendgrid_api_key: ${sendgrid_api_key}
+                sender: ${email_sender}
+                recipient: ${email_recipient}
             # Upload violations to GCS.
             - name: gcs_violations
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://{FORSETI_BUCKET}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner_violations
 
         - resource: iap_violations
           should_notify: true
@@ -327,15 +327,15 @@ notifier:
             # Email violations
             - name: email_violations
               configuration:
-                sendgrid_api_key: {SENDGRID_API_KEY}
-                sender: {EMAIL_SENDER}
-                recipient: {EMAIL_RECIPIENT}
+                sendgrid_api_key: ${sendgrid_api_key}
+                sender: ${email_sender}
+                recipient: ${email_recipient}
             # Upload violations to GCS.
             - name: gcs_violations
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://{FORSETI_BUCKET}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner_violations
 
         - resource: log_sink_violations
           should_notify: true
@@ -343,15 +343,15 @@ notifier:
             # Email violations
             - name: email_violations
               configuration:
-                sendgrid_api_key: {SENDGRID_API_KEY}
-                sender: {EMAIL_SENDER}
-                recipient: {EMAIL_RECIPIENT}
+                sendgrid_api_key: ${sendgrid_api_key}
+                sender: ${email_sender}
+                recipient: ${email_recipient}
             # Upload violations to GCS.
             - name: gcs_violations
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://{FORSETI_BUCKET}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner_violations
 
         - resource: service_account_key_violations
           should_notify: true
@@ -359,15 +359,15 @@ notifier:
             # Email violations
             - name: email_violations
               configuration:
-                sendgrid_api_key: {SENDGRID_API_KEY}
-                sender: {EMAIL_SENDER}
-                recipient: {EMAIL_RECIPIENT}
+                sendgrid_api_key: ${sendgrid_api_key}
+                sender: ${email_sender}
+                recipient: ${email_recipient}
             # Upload violations to GCS.
             - name: gcs_violations
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://{FORSETI_BUCKET}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner_violations
 
 
     violation:
@@ -384,9 +384,9 @@ notifier:
         # data_format may be one of: csv (the default) or json
         data_format: csv
         # gcs_path should begin with "gs://"
-        gcs_path: gs://{FORSETI_BUCKET}/inventory_summary
+        gcs_path: gs://${forseti_security_bucket}/inventory_summary
       email_summary:
         enabled: true
-        sendgrid_api_key: {SENDGRID_API_KEY}
-        sender: {EMAIL_SENDER}
-        recipient: {EMAIL_RECIPIENT}
+        sendgrid_api_key: ${sendgrid_api_key}
+        sender: ${email_sender}
+        recipient: ${email_recipient}

@@ -9,12 +9,12 @@ terraform {
   backend "gcs" {}
 }
 
-data "terraform_remote_state" "project" {
+data "terraform_remote_state" "bucket" {
   backend = "gcs"
 
   config {
     bucket = "${var.environment}-forseti-security-terraform-states"
-    prefix = "components/project"
+    prefix = "components/bucket"
   }
 }
 
@@ -27,11 +27,21 @@ data "terraform_remote_state" "database" {
   }
 }
 
+data "terraform_remote_state" "project" {
+  backend = "gcs"
+
+  config {
+    bucket = "${var.environment}-forseti-security-terraform-states"
+    prefix = "components/project"
+  }
+}
+
 data "template_file" "forseti_conf_server_yaml" {
   template = "${file("${path.module}/templates/forseti_conf_server.yaml")}"
 
   vars {
     domain_super_admin_email = "${var.service_accounts["g-suite-groups-auditor"]}"
+    forseti_security_bucket  = "${data.terraform_remote_state.bucket.name}"
     org_id                   = "${data.terraform_remote_state.project.org_id}"
     project_name_base        = "${var.project_name_base}"
     user                     = "${var.os}"
