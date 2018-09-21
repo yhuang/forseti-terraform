@@ -8,6 +8,8 @@ variable "cloudsql_database_user_name" {}
 
 variable "cloudsql_proxy" {}
 
+variable "enable_os_login" {}
+
 # export TF_VAR_environment
 variable "environment" {}
 

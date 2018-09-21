@@ -25,6 +25,8 @@ cloudsql_settings = {
   "tier"              = "db-f1-micro"
 }
 
+enable_os_login = "TRUE"
+
 forseti_security_services = [
   "explain",
   "inventory",
