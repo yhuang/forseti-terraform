@@ -76,6 +76,7 @@ data "template_file" "configure_forseti_security_server" {
     cloudsql_database_port      = "${var.cloudsql_database_port}"
     cloudsql_database_user_name = "${var.cloudsql_database_user_name}"
     cloudsql_proxy              = "${var.software["cloudsql-proxy"]}"
+    flock                       = "${var.software["flock"]}"
     forseti_conf_server_yaml    = "${data.template_file.forseti_conf_server_yaml.rendered}"
     forseti_security_bucket     = "${data.terraform_remote_state.bucket.name}"
     forseti_security_services   = "${local.forseti_security_services}"

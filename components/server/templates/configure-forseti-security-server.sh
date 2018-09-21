@@ -88,8 +88,7 @@ rm -f $FORSETI_HOME/install/gcp/scripts/run_forseti.sh
 
 USER=${user}
 RUN_FORSETI_SECURITY_SUITE=$FORSETI_HOME/install/gcp/scripts/run-forseit-security-suite.sh
-FLOCK=/usr/bin/flock
-LOCK_FILE=$FORSETI_HOME/forseti-cron-runner.lock
+LOCK_FILE=$FORSETI_HOME/cron-runner.lock
 WARNING="\nWARNING: New Forseti cron job will not be started, because the previous one is still running.\n"
 
 # Use flock to prevent rerun of the same cron job when the previous job is still running.
@@ -100,7 +99,7 @@ WARNING="\nWARNING: New Forseti cron job will not be started, because the previo
 # queue up the jobs.
 # If the cron job failed the acquire lock on the process, it will log a warning message to syslog.
 
-(echo "${run_frequency} ($FLOCK -n $LOCK_FILE $RUN_FORSETI_SECURITY_SUITE || echo $WARNING) 2>&1 | logger") | crontab -u $USER -
+(echo "${run_frequency} (${flock} -n $LOCK_FILE $RUN_FORSETI_SECURITY_SUITE || echo $WARNING) 2>&1 | logger") | crontab -u $USER -
 echo "Added the run_forseti.sh to crontab under user $USER."
 
 echo "Execution of startup script finished."

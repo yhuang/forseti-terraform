@@ -87,6 +87,7 @@ service_accounts = {
 
 software = {
   "cloudsql-proxy" = "/usr/bin/cloudsql-proxy"
+  "flock" = "/usr/bin/flock"
   "forseti-enforcer" = "/usr/bin/forseti-enforcer"
   "forseti-server" = "/usr/bin/forseti-server"
 }
