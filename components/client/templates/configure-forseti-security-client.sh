@@ -5,8 +5,8 @@
 FORSETI_SECURITY_ENVIRONMENT_SH=/etc/profile.d/forseti-security-environment.sh
 
 cat << EOF > $FORSETI_SECURITY_ENVIRONMENT_SH
-export FORSETI_HOME=$HOME/${project_name_base}
-export FORSETI_CLIENT_CONFIG=$FORSETI_HOME/configs/forseti_conf_client.yaml
+export FORSETI_HOME=\$HOME/${project_name_base}
+export FORSETI_CLIENT_CONFIG=\$FORSETI_HOME/configs/forseti_conf_client.yaml
 EOF
 
 source $FORSETI_SECURITY_ENVIRONMENT_SH

@@ -8,9 +8,9 @@ set -o nounset
 FORSETI_SECURITY_ENVIRONMENT_SH=${forseti_security_environment_sh}
 
 cat << EOF > $FORSETI_SECURITY_ENVIRONMENT_SH
-export FORSETI_HOME=$HOME/${project_name_base}
+export FORSETI_HOME=\$HOME/${project_name_base}
 export FORSETI_SECURITY_BUCKET=${forseti_security_bucket}
-export FORSETI_SERVER_CONFIG=$FORSETI_HOME/configs/forseti_conf_server.yaml
+export FORSETI_SERVER_CONFIG=\$FORSETI_HOME/configs/forseti_conf_server.yaml
 EOF
 
 source $FORSETI_SECURITY_ENVIRONMENT_SH
