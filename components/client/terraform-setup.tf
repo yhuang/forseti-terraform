@@ -28,7 +28,7 @@ data "terraform_remote_state" "server" {
 }
 
 data "template_file" "forseti_conf_client_yaml" {
-  template = "${file("${path.module}/templates/forseti_conf_client.yaml")}"
+  template = "${file("${path.module}/templates/forseti-conf-client.yaml")}"
 
   vars {
     forseti_server_ip = "${data.terraform_remote_state.server.internal_ip}"

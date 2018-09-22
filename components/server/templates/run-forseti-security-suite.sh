@@ -67,4 +67,4 @@ sleep 10s
 
 # Clean up the model tables
 echo "Cleaning up model tables..."
-forseti model delete ${MODEL_NAME}
+forseti model delete $MODEL_NAME

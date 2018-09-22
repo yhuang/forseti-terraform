@@ -22,8 +22,12 @@ cloudsql_settings = {
   "activation-policy" = "ALWAYS"
   "disk-size"         = 10
   "disk-type"         = "PD_HDD"
+  # Second-generation instance tiers are based on the machine type.
   "tier"              = "db-f1-micro"
 }
+
+email_recipient = ""
+email_sender = ""
 
 enable_os_login = "TRUE"
 
@@ -36,5 +40,7 @@ forseti_security_services = [
 ]
 
 machine_type = "f1-micro"
+
+sendgrid_api_key = ""
 
 subnetwork = "default"

@@ -91,3 +91,10 @@ software = {
   "forseti-enforcer" = "/usr/bin/forseti-enforcer"
   "forseti-server" = "/usr/bin/forseti-server"
 }
+
+system_configuration = {
+  "cloudsql-proxy-service"          = "/lib/systemd/system/cloudsql-proxy.service"
+  "forseti-foreground-sh"           = "/usr/bin/forseti-foreground.sh"
+  "forseti-security-environment-sh" = "/etc/profile.d/forseti-security-environment.sh"
+  "forseti-service"                 = "/lib/systemd/system/forseti.service"
+}

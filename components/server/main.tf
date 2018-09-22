@@ -23,6 +23,6 @@ resource "google_compute_instance" "server" {
   }
 
   metadata {
-    startup-script = "${data.template_file.configure_forseti_services.rendered}"
+    startup-script = "${data.template_file.configure_forseti_security_server.rendered}"
   }
 }

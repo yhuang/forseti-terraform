@@ -24,6 +24,6 @@ resource "google_compute_instance" "client" {
 
   metadata {
     enable-oslogin = "${var.enable_os_login}"
-    startup-script = "${data.template_file.configure_forseti_services.rendered}"
+    startup-script = "${data.template_file.configure_forseti_security_client.rendered}"
   }
 }
