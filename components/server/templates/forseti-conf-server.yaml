@@ -139,7 +139,7 @@ notifier:
             # Slack webhook pipeline.
             # Create an incoming webhook in your organization's Slack setting, located at:
             # https://[your_org].slack.com/apps/manage/custom-integrations
-            # Add the provided URL in the configuration below in `webhook_url`.
+            # Add the provided URL in the configuration below in "webhook_url".
             - name: slack_webhook
               configuration:
                 data_format: json  # slack only supports json
@@ -368,7 +368,6 @@ notifier:
                 data_format: csv
                 # gcs_path should begin with "gs://"
                 gcs_path: gs://${forseti_security_bucket}/scanner_violations
-
 
     violation:
       cscc:

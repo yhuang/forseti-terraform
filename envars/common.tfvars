@@ -30,8 +30,6 @@ byte_length = 4
 
 cloudsql_database_port = 3306
 
-cloudsql_database_user_name = "forseti"
-
 cloudsql_database_version = "MYSQL_5_7"
 
 forseti_roles = {
@@ -86,15 +84,17 @@ service_accounts = {
 }
 
 software = {
-  "cloudsql-proxy" = "/usr/bin/cloudsql-proxy"
-  "flock" = "/usr/bin/flock"
-  "forseti-enforcer" = "/usr/bin/forseti-enforcer"
-  "forseti-server" = "/usr/bin/forseti-server"
+  "cloudsql-proxy"                = "/usr/bin/cloudsql-proxy"
+  "date"                          = "/bin/date"
+  "flock"                         = "/usr/bin/flock"
+  "forseti-enforcer"              = "/usr/bin/forseti-enforcer"
+  "forseti-foreground-sh"         = "/usr/bin/forseti-foreground.sh"
+  "forseti-server"                = "/usr/bin/forseti-server"
+  "run-forseti-security-suite-sh" = "/usr/bin/run-forseti-security-suite.sh"
 }
 
 system_configuration = {
   "cloudsql-proxy-service"          = "/lib/systemd/system/cloudsql-proxy.service"
-  "forseti-foreground-sh"           = "/usr/bin/forseti-foreground.sh"
   "forseti-security-environment-sh" = "/etc/profile.d/forseti-security-environment.sh"
   "forseti-service"                 = "/lib/systemd/system/forseti.service"
 }

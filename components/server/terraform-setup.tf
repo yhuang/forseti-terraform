@@ -68,6 +68,11 @@ data "template_file" "run_frequency" {
 
 data "template_file" "run_forseti_security_suite" {
   template = "${file("${path.module}/templates/run-forseti-security-suite.sh")}"
+
+  vars {
+    date                            = "${var.software["date"]}"
+    forseti_security_environment_sh = "${var.system_configuration["forseti-security-environment-sh"]}"
+  }
 }
 
 data "template_file" "configure_forseti_security_server" {
@@ -77,19 +82,19 @@ data "template_file" "configure_forseti_security_server" {
     cloudsql_connection_name        = "${data.terraform_remote_state.database.connection_name}"
     cloudsql_database_name          = "${local.database_name}"
     cloudsql_database_port          = "${var.cloudsql_database_port}"
-    cloudsql_database_user_name     = "${var.cloudsql_database_user_name}"
     cloudsql_proxy                  = "${var.software["cloudsql-proxy"]}"
     cloudsql_proxy_service          = "${var.system_configuration["cloudsql-proxy-service"]}"
     flock                           = "${var.software["flock"]}"
     forseti_conf_server_yaml        = "${data.template_file.forseti_conf_server_yaml.rendered}"
-    forseti_foreground_sh           = "${var.system_configuration["forseti-foreground-sh"]}"
+    forseti_foreground_sh           = "${var.software["forseti-foreground-sh"]}"
     forseti_security_bucket         = "${data.terraform_remote_state.bucket.name}"
     forseti_security_environment_sh = "${var.system_configuration["forseti-security-environment-sh"]}"
     forseti_security_services       = "${local.forseti_security_services}"
     forseti_server                  = "${var.software["forseti-server"]}"
-    forseti_service                 = "${var.system_configuration["cloudsql-proxy-service"]}"
+    forseti_service                 = "${var.system_configuration["forseti-service"]}"
     project_name_base               = "${var.project_name_base}"
     run_forseti_security_suite      = "${data.template_file.run_forseti_security_suite.rendered}"
+    run_forseti_security_suite_sh   = "${var.software["run-forseti-security-suite-sh"]}"
     run_frequency                   = "${chomp(data.template_file.run_frequency.rendered)}"
     user                            = "${var.os}"
   }

@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
 
-# Store the variables in /etc/profile.d/forseti-security-environment.sh
+set -o errexit
+set -o nounset
+
+USER=${user}
+FORSETI_HOME=/home/$USER/${project_name_base}
+FORSETI_CLIENT_CONFIG=$FORSETI_HOME/configs/forseti_conf_client.yaml
+
+# Store the variables in $FORSETI_SECURITY_ENVIRONMENT_SH
 # so all the users will have access to them
-FORSETI_SECURITY_ENVIRONMENT_SH=/etc/profile.d/forseti-security-environment.sh
+FORSETI_SECURITY_ENVIRONMENT_SH=${forseti_security_environment_sh}
 
 cat << EOF > $FORSETI_SECURITY_ENVIRONMENT_SH
-export FORSETI_HOME=\$HOME/${project_name_base}
-export FORSETI_CLIENT_CONFIG=\$FORSETI_HOME/configs/forseti_conf_client.yaml
+export FORSETI_HOME=$FORSETI_HOME
+export FORSETI_CLIENT_CONFIG=$FORSETI_CLIENT_CONFIG
 EOF
-
-source $FORSETI_SECURITY_ENVIRONMENT_SH
 
 cat << EOF > $FORSETI_CLIENT_CONFIG
 ${forseti_conf_client_yaml}

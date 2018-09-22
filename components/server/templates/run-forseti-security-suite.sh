@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-FORSETI_SECURITY_ENVIRONMENT_SH=/etc/profile.d/forseti-security-environment.sh
-source $FORSETI_SECURITY_ENVIRONMENT_SH
+source ${forseti_security_environment_sh}
 
 # set -x enables a mode of the shell where all executed commands are printed to the terminal.
 # With this  enabled, we should not put anything private/secret in the commands called because
@@ -31,7 +30,7 @@ forseti config format json
 forseti inventory purge
 
 # Run inventory command
-MODEL_NAME=$(/bin/date -u +%Y%m%dT%H%M%S)
+MODEL_NAME=$(${date} -u +%Y%m%dT%H%M%S)
 echo "Running Forseti Inventory..."
 forseti inventory create --import_as $MODEL_NAME
 echo "Finished running Forseti Inventory."

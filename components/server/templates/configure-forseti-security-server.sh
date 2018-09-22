@@ -3,17 +3,20 @@
 set -o errexit
 set -o nounset
 
+USER=${user}
+FORSETI_HOME=/home/$USER/${project_name_base}
+FORSETI_SECURITY_BUCKET=${forseti_security_bucket}
+FORSETI_SERVER_CONFIG=$FORSETI_HOME/configs/forseti_conf_server.yaml
+
 # Store the variables in $FORSETI_SECURITY_ENVIRONMENT_SH, so
 # all the users will have access to them.
 FORSETI_SECURITY_ENVIRONMENT_SH=${forseti_security_environment_sh}
 
 cat << EOF > $FORSETI_SECURITY_ENVIRONMENT_SH
-export FORSETI_HOME=\$HOME/${project_name_base}
-export FORSETI_SECURITY_BUCKET=${forseti_security_bucket}
-export FORSETI_SERVER_CONFIG=\$FORSETI_HOME/configs/forseti_conf_server.yaml
+export FORSETI_HOME=$FORSETI_HOME
+export FORSETI_SECURITY_BUCKET=$FORSETI_SECURITY_BUCKET
+export FORSETI_SERVER_CONFIG=$FORSETI_SERVER_CONFIG
 EOF
-
-source $FORSETI_SECURITY_ENVIRONMENT_SH
 
 cat << EOF > $FORSETI_SERVER_CONFIG
 ${forseti_conf_server_yaml}
@@ -47,7 +50,7 @@ ExecStart=$CLOUDSQL_PROXY_COMMAND
 WantedBy=$FORSETI_SERVICE
 EOF
 
-SQL_SERVER_LOCAL_ADDRESS="mysql://${cloudsql_database_user_name}@127.0.0.1:${cloudsql_database_port}"
+SQL_SERVER_LOCAL_ADDRESS="mysql://$USER@127.0.0.1:${cloudsql_database_port}"
 
 FORSETI_COMMAND="${forseti_server} --endpoint '[::]:50051'"
 FORSETI_COMMAND+=" --forseti_db $SQL_SERVER_LOCAL_ADDRESS/${cloudsql_database_name}"
@@ -58,7 +61,7 @@ cat << EOF > ${forseti_service}
 [Unit]
 Description=Forseti Security API Server
 [Service]
-User=${user}
+User=$USER
 Restart=always
 RestartSec=3
 ExecStart=$FORSETI_COMMAND
@@ -81,18 +84,22 @@ chmod 755 $FORSETI_FOREGROUND_SH
 echo "Forseti services are now registered with systemd. Services can be started"
 echo "immediately by running the following:"
 echo ""
-echo "    systemctl start cloudsql-proxy"
-echo "    systemctl start forseti"
+echo "    systemctl start $CLOUDSQL_PROXY_SERVICE"
+echo "    systemctl start $FORSETI_SERVICE"
 echo ""
 echo "Additionally, the Forseti server can be run in the foreground by using"
 echo "the foreground runner script: $FORSETI_FOREGROUND_SH"
 
-rm -f $FORSETI_HOME/install/gcp/scripts/run_forseti.sh
+systemctl start $CLOUDSQL_PROXY_SERVICE
+systemctl start $FORSETI_SERVICE
 
-USER=${user}
-RUN_FORSETI_SECURITY_SUITE=$FORSETI_HOME/install/gcp/scripts/run-forseit-security-suite.sh
+RUN_FORSETI_SECURITY_SUITE_SH=${run_forseti_security_suite_sh}
 LOCK_FILE=$FORSETI_HOME/cron-runner.lock
 WARNING="WARNING: New Forseti cron job will not be started, because the previous one is still running."
+
+cat << EOF > $RUN_FORSETI_SECURITY_SUITE
+${run_forseti_security_suite}
+EOF
 
 # Use flock to prevent rerun of the same cron job when the previous job is still running.
 # If the lock file does not exist under the tmp directory, it will create the file and put a lock on top of the file.

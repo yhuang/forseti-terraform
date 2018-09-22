@@ -4,8 +4,6 @@ variable "availability_zones" {
 
 variable "cloudsql_database_port" {}
 
-variable "cloudsql_database_user_name" {}
-
 variable "email_recipient" {}
 
 variable "email_sender" {}

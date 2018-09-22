@@ -13,6 +13,10 @@ resource "google_compute_instance" "server" {
   network_interface {
     subnetwork         = "${var.subnetwork}"
     subnetwork_project = "${local.project_id}"
+
+    access_config {
+      // Ephemeral External IP
+    }
   }
 
   service_account {

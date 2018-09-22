@@ -39,7 +39,9 @@ data "template_file" "configure_forseti_security_client" {
   template = "${file("${path.module}/templates/configure-forseti-security-client.sh")}"
 
   vars {
-    forseti_conf_client_yaml = "${data.template_file.forseti_conf_client_yaml.rendered}"
-    project_name_base        = "${var.project_name_base}"
+    forseti_conf_client_yaml        = "${data.template_file.forseti_conf_client_yaml.rendered}"
+    forseti_security_environment_sh = "${var.system_configuration["forseti-security-environment-sh"]}"
+    project_name_base               = "${var.project_name_base}"
+    user                            = "${var.os}"
   }
 }
