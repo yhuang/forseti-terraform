@@ -1,6 +1,7 @@
 resource "google_compute_instance" "server" {
   name         = "${local.server_name}"
   machine_type = "${var.machine_type}"
+  project      = "${local.project_id}"
   zone         = "${var.availability_zones[0]}"
 
   boot_disk {

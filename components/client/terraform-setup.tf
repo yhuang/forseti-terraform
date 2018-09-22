@@ -41,6 +41,5 @@ data "template_file" "configure_forseti_security_client" {
   vars {
     forseti_conf_client_yaml = "${data.template_file.forseti_conf_client_yaml.rendered}"
     project_name_base        = "${var.project_name_base}"
-    user                     = "${var.os}"
   }
 }

@@ -2,12 +2,6 @@ variable "availability_zones" {
   type = "list"
 }
 
-variable "cloudsql_database_port" {}
-
-variable "cloudsql_database_user_name" {}
-
-variable "cloudsql_proxy" {}
-
 variable "enable_os_login" {}
 
 # export TF_VAR_environment
