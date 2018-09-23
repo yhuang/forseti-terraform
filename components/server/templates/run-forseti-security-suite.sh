@@ -36,8 +36,7 @@ forseti inventory create --import_as $MODEL_NAME
 echo "Finished running Forseti Inventory."
 sleep 5s
 
-GET_MODEL_STATUS="forseti model get $MODEL_NAME | python -c \"import sys, json; print json.load(sys.stdin)['status']\""
-MODEL_STATUS=`eval $GET_MODEL_STATUS`
+MODEL_STATUS=$(forseti model get $MODEL_NAME | python -c "import sys, json; print json.load(sys.stdin)['status']")
 
 if [ "$MODEL_STATUS" == "BROKEN" ]; then
     echo "ERROR: Model is broken. Please contact discuss@forsetisecurity.org for support."

@@ -3,17 +3,16 @@
 set -o errexit
 set -o nounset
 
-USER=${user}
-FORSETI_HOME=/home/$USER/${project_name_base}
+FORSETI_INSTALL_DIR=${forseti_install_dir}
 FORSETI_SECURITY_BUCKET=${forseti_security_bucket}
-FORSETI_SERVER_CONFIG=$FORSETI_HOME/configs/forseti_conf_server.yaml
+FORSETI_SERVER_CONFIG=$FORSETI_INSTALL_DIR/configs/forseti_conf_server.yaml
 
 # Store the variables in $FORSETI_SECURITY_ENVIRONMENT_SH, so
 # all the users will have access to them.
 FORSETI_SECURITY_ENVIRONMENT_SH=${forseti_security_environment_sh}
 
 cat << EOF > $FORSETI_SECURITY_ENVIRONMENT_SH
-export FORSETI_HOME=$FORSETI_HOME
+export FORSETI_INSTALL_DIR=$FORSETI_INSTALL_DIR
 export FORSETI_SECURITY_BUCKET=$FORSETI_SECURITY_BUCKET
 export FORSETI_SERVER_CONFIG=$FORSETI_SERVER_CONFIG
 EOF
@@ -50,6 +49,7 @@ ExecStart=$CLOUDSQL_PROXY_COMMAND
 WantedBy=$FORSETI_SERVICE
 EOF
 
+USER=${user}
 SQL_SERVER_LOCAL_ADDRESS="mysql://$USER@127.0.0.1:${cloudsql_database_port}"
 
 FORSETI_COMMAND="${forseti_server} --endpoint '[::]:50051'"
@@ -60,6 +60,7 @@ FORSETI_COMMAND+=" --services ${forseti_security_services}"
 cat << EOF > ${forseti_service}
 [Unit]
 Description=Forseti Security API Server
+Wants=$CLOUDSQL_PROXY_SERVICE
 [Service]
 User=$USER
 Restart=always
@@ -67,7 +68,6 @@ RestartSec=3
 ExecStart=$FORSETI_COMMAND
 [Install]
 WantedBy=multi-user.target
-Wants=$CLOUDSQL_PROXY_SERVICE
 EOF
 
 # Define a foreground runner. This runner will start the Cloud SQL
@@ -94,12 +94,14 @@ systemctl start $CLOUDSQL_PROXY_SERVICE
 systemctl start $FORSETI_SERVICE
 
 RUN_FORSETI_SECURITY_SUITE_SH=${run_forseti_security_suite_sh}
-LOCK_FILE=$FORSETI_HOME/cron-runner.lock
+LOCK_FILE=$FORSETI_INSTALL_DIR/cron-runner.lock
 WARNING="WARNING: New Forseti cron job will not be started, because the previous one is still running."
 
-cat << EOF > $RUN_FORSETI_SECURITY_SUITE
+cat << 'EOF' > $RUN_FORSETI_SECURITY_SUITE_SH
 ${run_forseti_security_suite}
 EOF
+
+chmod 755 $RUN_FORSETI_SECURITY_SUITE_SH
 
 # Use flock to prevent rerun of the same cron job when the previous job is still running.
 # If the lock file does not exist under the tmp directory, it will create the file and put a lock on top of the file.
@@ -110,7 +112,7 @@ EOF
 #
 # If the cron job failed the acquire lock on the process, it will log a warning message to syslog.
 
-(echo "${run_frequency} (${flock} -n $LOCK_FILE $RUN_FORSETI_SECURITY_SUITE || echo $WARNING) 2>&1 | logger") | crontab -u $USER -
-echo "Added $RUN_FORSETI_SECURITY_SUITE to crontab under user $USER."
+(echo "${run_frequency} (${flock} -n $LOCK_FILE $RUN_FORSETI_SECURITY_SUITE_SH || echo $WARNING) 2>&1 | logger") | crontab -u $USER -
+echo "Added $RUN_FORSETI_SECURITY_SUITE_SH to crontab under user $USER."
 
 echo "Execution of startup script finished."

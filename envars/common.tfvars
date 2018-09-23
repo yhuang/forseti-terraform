@@ -95,6 +95,7 @@ software = {
 
 system_configuration = {
   "cloudsql-proxy-service"          = "/lib/systemd/system/cloudsql-proxy.service"
+  "forseti-install-dir"             = "/opt/forseti-security"
   "forseti-security-environment-sh" = "/etc/profile.d/forseti-security-environment.sh"
   "forseti-service"                 = "/lib/systemd/system/forseti.service"
 }
