@@ -1,5 +1,5 @@
 variable "availability_zones" {
-  type = "list"
+  type = "map"
 }
 
 variable "enable_os_login" {}
@@ -24,8 +24,6 @@ variable "regions" {
 variable "scopes" {
   type = "map"
 }
-
-variable "subnetwork" {}
 
 variable "software" {
   type = "map"

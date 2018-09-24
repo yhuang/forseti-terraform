@@ -1,5 +1,5 @@
 provider "google" {
-  region = "${var.regions[0]}"
+  region = "${var.regions[1]}"
 }
 
 terraform {
@@ -15,6 +15,15 @@ data "terraform_remote_state" "project" {
   config {
     bucket = "${var.environment}-forseti-security-terraform-states"
     prefix = "components/project"
+  }
+}
+
+data "terraform_remote_state" "networking" {
+  backend = "gcs"
+
+  config {
+    bucket = "${var.environment}-forseti-security-terraform-states"
+    prefix = "components/networking"
   }
 }
 

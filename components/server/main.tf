@@ -2,7 +2,7 @@ resource "google_compute_instance" "server" {
   name         = "${local.server_name}"
   machine_type = "${var.machine_type}"
   project      = "${local.project_id}"
-  zone         = "${var.availability_zones[0]}"
+  zone         = "${element(var.availability_zones[var.regions[1]], 0)}"
 
   boot_disk {
     initialize_params {
@@ -11,7 +11,7 @@ resource "google_compute_instance" "server" {
   }
 
   network_interface {
-    subnetwork         = "${var.subnetwork}"
+    subnetwork         = "${local.subnetwork}"
     subnetwork_project = "${local.project_id}"
 
     access_config {

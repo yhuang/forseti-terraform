@@ -27,6 +27,7 @@ cloudsql_settings = {
 }
 
 email_recipient = ""
+
 email_sender = ""
 
 enable_os_login = "TRUE"
@@ -43,4 +44,9 @@ machine_type = "f1-micro"
 
 sendgrid_api_key = ""
 
-subnetwork = "default"
+subnetwork_cidr_ranges = {
+  "us-west1"    = "10.128.0.0/24"
+  "us-central1" = "10.129.0.0/24"
+  "us-east1"    = "10.130.0.0/24"
+  "us-east4"    = "10.131.0.0/24"
+}

@@ -1,5 +1,5 @@
 variable "availability_zones" {
-  type = "list"
+  type = "map"
 }
 
 variable "cloudsql_database_port" {}
@@ -42,5 +42,3 @@ variable "software" {
 variable "system_configuration" {
   type = "map"
 }
-
-variable "subnetwork" {}

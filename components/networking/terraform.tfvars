@@ -7,7 +7,7 @@ terragrunt = {
     backend = "gcs"
     config {
       bucket  = "${get_env("TF_VAR_environment", "default")}-forseti-security-terraform-states"
-      prefix  = "components/bucket"
+      prefix  = "components/networking"
       credentials = "${get_env("GOOGLE_APPLICATION_CREDENTIALS", "default")}"
       project = "${get_env("TF_VAR_terraform_admin_project_id", "terraform-org-admin")}"
     }

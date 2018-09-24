@@ -21,10 +21,24 @@ apis = [
   "resourceviews.googleapis.com",
 ]
 
-availability_zones = [
-  "us-central1-b",
-  "us-central1-c",
-]
+availability_zones = {
+  "us-west1" = [
+    "us-central1-a",
+    "us-central1-b",
+  ]
+  "us-central1" = [
+    "us-central1-b",
+    "us-central1-f",
+  ]
+  "us-east1" = [
+    "us-central1-c",
+    "us-central1-d",
+  ]
+  "us-east4" = [
+    "us-central1-a",
+    "us-central1-b",
+  ]
+}
 
 byte_length = 4
 
@@ -60,7 +74,10 @@ os = "centos"
 project_name_base = "forseti-security"
 
 regions = [
+  "us-west1",
   "us-central1",
+  "us-east1",
+  "us-east4",
 ]
 
 scopes = {

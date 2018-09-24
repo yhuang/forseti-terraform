@@ -1,5 +1,5 @@
 provider "google" {
-  region = "${var.regions[0]}"
+  region = "${var.regions[1]}"
 }
 
 provider "random" {}
