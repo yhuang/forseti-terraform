@@ -13,6 +13,8 @@ variable "forseti_security_services" {
 
 variable "machine_type" {}
 
+variable "network_tier" {}
+
 variable "os" {}
 
 variable "project_name_base" {}

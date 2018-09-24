@@ -15,7 +15,13 @@ variable "forseti_security_services" {
   type = "list"
 }
 
+variable "known_ips" {
+  type = "map"
+}
+
 variable "machine_type" {}
+
+variable "network_tier" {}
 
 variable "os" {}
 
@@ -36,6 +42,10 @@ variable "scopes" {
 }
 
 variable "software" {
+  type = "map"
+}
+
+variable "subnetwork_cidr_ranges" {
   type = "map"
 }
 

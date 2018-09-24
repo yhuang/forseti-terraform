@@ -15,6 +15,7 @@ resource "google_compute_instance" "server" {
     subnetwork_project = "${local.project_id}"
 
     access_config {
+      network_tier = "${var.network_tier}"
       // Ephemeral External IP
     }
   }
