@@ -2,7 +2,7 @@ terragrunt = {
   dependencies {
     paths = ["../project"]
   }
-  
+
   remote_state {
     backend = "gcs"
     config {
@@ -14,7 +14,7 @@ terragrunt = {
   }
 
   terraform {
-    # Force Terraform to keep trying to acquire a lock for up to 20 minutes
+    # Force Terraform to keep trying to acquire a lock for up to 5 minutes
     # if someone else already has the lock.
     extra_arguments "retry_lock" {
       commands = [
@@ -30,7 +30,7 @@ terragrunt = {
       ]
 
       arguments = [
-        "-lock-timeout=30s",
+        "-lock-timeout=5m",
         "--var-file=${get_tfvars_dir()}/../../envars/common.tfvars",
         "--var-file=${get_tfvars_dir()}/../../envars/${get_env("TF_VAR_environment", "default")}.tfvars",
         "--var-file=terraform.tfvars"
