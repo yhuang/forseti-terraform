@@ -2,13 +2,15 @@ variable "availability_zones" {
   type = "map"
 }
 
-variable "enable_os_login" {}
-
 # export TF_VAR_environment
 variable "environment" {}
 
 variable "forseti_security_services" {
   type = "list"
+}
+
+variable "known_ips" {
+  type = "map"
 }
 
 variable "machine_type" {}
