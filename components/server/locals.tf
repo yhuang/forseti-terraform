@@ -1,7 +1,7 @@
 locals {
   database_name             = "${replace(var.project_name_base, "-", "_")}"
   forseti_security_services = "${join(" ", var.forseti_security_services)}"
-  image_family              = "${local.project_id}/${var.project_name_base}"
+  image_family              = "${data.google_compute_image.latest_forseti_security_image.name}"
   network                   = "${data.terraform_remote_state.networking.network_self_link}"
   project_id                = "${data.terraform_remote_state.project.project_id}"
   project_name              = "${data.terraform_remote_state.project.project_name}"
