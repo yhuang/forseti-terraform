@@ -43,11 +43,11 @@ inventory:
           max_calls: 4
           period: 1.2
         iam:
-          max_calls: 18
+          max_calls: 90
           period: 1.0
         logging:
-          max_calls: 1
-          period: 1.1
+          max_calls: 9
+          period: 1.0
         securitycenter:
           max_calls: 1
           period: 1.1,
@@ -57,6 +57,11 @@ inventory:
         sqladmin:
           max_calls: 1
           period: 1.1
+
+    cai:
+        enabled: True
+        # gcs_path should begin with "gs://"
+        gcs_path: gs://${forseti_security_bucket}/asset-inventory
 
     # Number of days to retain inventory data:
     #  -1 : (default) keep all previous data forever
@@ -70,7 +75,7 @@ scanner:
     # Output path (do not include filename).
     # If GCS location, the format of the path should be:
     # gs://bucket-name/path/for/output
-    output_path: gs://${forseti_security_bucket}/scanner_violations
+    output_path: gs://${forseti_security_bucket}/scanner-violations
 
     # Rules path (do not include filename).
     # If GCS location, the format of the path should be:
@@ -135,7 +140,7 @@ notifier:
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://${forseti_security_bucket}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner-violations
             # Slack webhook pipeline.
             # Create an incoming webhook in your organization's Slack setting, located at:
             # https://[your_org].slack.com/apps/manage/custom-integrations
@@ -159,7 +164,7 @@ notifier:
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://${forseti_security_bucket}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner-violations
 
         - resource: blacklist_violations
           should_notify: true
@@ -175,7 +180,7 @@ notifier:
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://${forseti_security_bucket}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner-violations
 
         - resource: bigquery_acl_violations
           should_notify: true
@@ -191,7 +196,7 @@ notifier:
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://${forseti_security_bucket}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner-violations
 
         - resource: buckets_acl_violations
           should_notify: true
@@ -207,7 +212,7 @@ notifier:
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://${forseti_security_bucket}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner-violations
 
         - resource: cloudsql_acl_violations
           should_notify: true
@@ -223,7 +228,7 @@ notifier:
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://${forseti_security_bucket}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner-violations
 
         - resource: enabled_apis_violations
           should_notify: true
@@ -239,7 +244,7 @@ notifier:
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://${forseti_security_bucket}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner-violations
 
         - resource: firewall_rule_violations
           should_notify: true
@@ -255,7 +260,7 @@ notifier:
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://${forseti_security_bucket}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner-violations
 
         - resource: forwarding_rule_violations
           should_notify: true
@@ -271,7 +276,7 @@ notifier:
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://${forseti_security_bucket}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner-violations
 
         - resource: ke_version_violations
           should_notify: true
@@ -287,7 +292,7 @@ notifier:
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://${forseti_security_bucket}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner-violations
 
         - resource: groups_violations
           should_notify: true
@@ -303,7 +308,7 @@ notifier:
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://${forseti_security_bucket}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner-violations
 
         - resource: instance_network_interface_violations
           should_notify: true
@@ -319,7 +324,7 @@ notifier:
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://${forseti_security_bucket}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner-violations
 
         - resource: iap_violations
           should_notify: true
@@ -335,7 +340,7 @@ notifier:
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://${forseti_security_bucket}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner-violations
 
         - resource: log_sink_violations
           should_notify: true
@@ -351,7 +356,7 @@ notifier:
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://${forseti_security_bucket}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner-violations
 
         - resource: service_account_key_violations
           should_notify: true
@@ -367,7 +372,7 @@ notifier:
               configuration:
                 data_format: csv
                 # gcs_path should begin with "gs://"
-                gcs_path: gs://${forseti_security_bucket}/scanner_violations
+                gcs_path: gs://${forseti_security_bucket}/scanner-violations
 
     violation:
       cscc:
@@ -383,7 +388,7 @@ notifier:
         # data_format may be one of: csv (the default) or json
         data_format: csv
         # gcs_path should begin with "gs://"
-        gcs_path: gs://${forseti_security_bucket}/inventory_summary
+        gcs_path: gs://${forseti_security_bucket}/inventory-summary
       email_summary:
         enabled: true
         sendgrid_api_key: ${sendgrid_api_key}

@@ -1,13 +1,5 @@
-variable "availability_zones" {
-  type = "map"
-}
-
 # export TF_VAR_environment
 variable "environment" {}
-
-variable "forseti_security_services" {
-  type = "list"
-}
 
 variable "machine_type" {}
 
@@ -19,16 +11,8 @@ variable "regions" {
   type = "list"
 }
 
-variable "scopes" {
-  type = "map"
-}
-
-variable "software" {
-  type = "map"
-}
-
 variable "states_bucket_base" {}
 
-variable "system_configuration" {
+variable "subnetwork_cidr_ranges" {
   type = "map"
 }

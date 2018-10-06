@@ -30,3 +30,5 @@ variable "project_name_base" {}
 variable "regions" {
   type = "list"
 }
+
+variable "states_bucket_base" {}

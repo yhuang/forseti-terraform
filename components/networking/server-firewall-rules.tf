@@ -7,7 +7,15 @@ resource "google_compute_firewall" "d_all_to_forseti_security_server" {
   priority  = 200
 
   deny {
+    protocol = "icmp"
+  }
+
+  deny {
     protocol = "tcp"
+  }
+
+  deny {
+    protocol = "udp"
   }
 
   source_ranges = [

@@ -9,10 +9,6 @@ variable "forseti_security_services" {
   type = "list"
 }
 
-variable "machine_type" {}
-
-variable "network_tier" {}
-
 variable "project_name_base" {}
 
 variable "regions" {

@@ -9,12 +9,6 @@ terraform {
   backend "gcs" {}
 }
 
-# https://github.com/hashicorp/terraform/pull/12223
-data "google_compute_image" "latest_forseti_security_image" {
-  project   = "${local.project_id}"
-  family    = "${var.project_name_base}"
-}
-
 data "terraform_remote_state" "project" {
   backend = "gcs"
 
@@ -24,12 +18,12 @@ data "terraform_remote_state" "project" {
   }
 }
 
-data "terraform_remote_state" "networking" {
+data "terraform_remote_state" "machine_template" {
   backend = "gcs"
 
   config {
     bucket = "${local.states_bucket}"
-    prefix = "components/networking"
+    prefix = "components/machine-template"
   }
 }
 

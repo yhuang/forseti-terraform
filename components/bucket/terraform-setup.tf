@@ -13,7 +13,7 @@ data "terraform_remote_state" "project" {
   backend = "gcs"
 
   config {
-    bucket = "${var.environment}-forseti-security-terraform-states"
+    bucket = "${local.states_bucket}"
     prefix = "components/project"
   }
 }

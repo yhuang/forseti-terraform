@@ -2,7 +2,7 @@ resource "google_compute_instance" "client" {
   name         = "${local.client_name}"
   machine_type = "${var.machine_type}"
   project      = "${local.project_id}"
-  zone         = "${element(var.availability_zones[var.regions[1]], 0)}"
+  zone         = "${local.zone}"
 
   boot_disk {
     initialize_params {
@@ -29,6 +29,6 @@ resource "google_compute_instance" "client" {
   }
 
   metadata {
-    startup-script = "${data.template_file.configure_forseti_security_client.rendered}"
+    startup-script = "${local.startup_script}"
   }
 }

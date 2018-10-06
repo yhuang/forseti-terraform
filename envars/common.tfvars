@@ -2,10 +2,12 @@ apis = [
   "admin.googleapis.com",
   "appengine.googleapis.com",
   "bigquery-json.googleapis.com",
+  "cloudasset.googleapis.com",
   "cloudbilling.googleapis.com",
   "cloudresourcemanager.googleapis.com",
   "deploymentmanager.googleapis.com",
   "iam.googleapis.com",
+  "servicemanagement.googleapis.com",
   "serviceusage.googleapis.com",
   "sql-component.googleapis.com",
   "sqladmin.googleapis.com",
@@ -63,6 +65,7 @@ iam_roles = {
   "iam-serviceAccountTokenCreator"    = "roles/iam.serviceAccountTokenCreator"
   "iam-securityReviewer"              = "roles/iam.securityReviewer"
   "logging-logWriter"                 = "roles/logging.logWriter"
+  "storage-objectAdmin"               = "roles/storage.objectAdmin"
   "storage-objectCreator"             = "roles/storage.objectCreator"
   "storage-objectViewer"              = "roles/storage.objectViewer"
   "servicemanagement-quotaViewer"     = "roles/servicemanagement.quotaViewer"
@@ -116,3 +119,5 @@ system_configuration = {
   "forseti-security-environment-sh" = "/etc/profile.d/forseti-security-environment.sh"
   "forseti-service"                 = "/lib/systemd/system/forseti.service"
 }
+
+states_bucket_base = "terraform-states"
