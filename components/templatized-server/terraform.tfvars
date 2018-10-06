@@ -4,6 +4,7 @@ terragrunt = {
       "../networking",
       "../bucket",
       "../database",
+      "../machine-template",
     ]
   }
 

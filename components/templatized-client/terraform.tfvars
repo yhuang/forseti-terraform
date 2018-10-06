@@ -1,7 +1,8 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../server"
+      "../machine-template",
+      "../templatized-server",
     ]
   }
 
