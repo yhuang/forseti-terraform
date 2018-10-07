@@ -115,11 +115,11 @@ software = {
   "run-forseti-security-suite-sh" = "/usr/bin/run-forseti-security-suite.sh"
 }
 
+states_bucket_base = "terraform-states"
+
 system_configuration = {
   "cloudsql-proxy-service"          = "/lib/systemd/system/cloudsql-proxy.service"
   "forseti-install-dir"             = "/opt/forseti-security"
   "forseti-security-environment-sh" = "/etc/profile.d/forseti-security-environment.sh"
   "forseti-service"                 = "/lib/systemd/system/forseti.service"
 }
-
-states_bucket_base = "terraform-states"
