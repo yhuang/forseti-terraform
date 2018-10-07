@@ -7,8 +7,10 @@ variable "network_tier" {}
 
 variable "project_name_base" {}
 
+variable "region" {}
+
 variable "regions" {
-  type = "list"
+  type = "map"
 }
 
 variable "states_bucket_base" {}

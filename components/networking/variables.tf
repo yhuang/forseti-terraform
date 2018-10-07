@@ -7,7 +7,7 @@ variable "known_ips" {
 variable "project_name_base" {}
 
 variable "regions" {
-  type = "list"
+  type = "map"
 }
 
 variable "states_bucket_base" {}

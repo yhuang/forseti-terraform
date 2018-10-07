@@ -1,6 +1,4 @@
-provider "google" {
-  region = "${var.regions[1]}"
-}
+provider "google" {}
 
 terraform {
   # terraform.required_version: cannot contain interpolations

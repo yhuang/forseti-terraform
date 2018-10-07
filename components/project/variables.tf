@@ -17,9 +17,5 @@ variable "iam_roles" {
 
 variable "project_name_base" {}
 
-variable "regions" {
-  type = "list"
-}
-
 # export TF_VAR_terraform_admin_project_id
 variable "terraform_admin_project_id" {}

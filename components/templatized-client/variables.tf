@@ -11,8 +11,10 @@ variable "forseti_security_services" {
 
 variable "project_name_base" {}
 
+variable "region" {}
+
 variable "regions" {
-  type = "list"
+  type = "map"
 }
 
 variable "scopes" {

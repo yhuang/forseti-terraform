@@ -6,7 +6,7 @@ resource "google_sql_database_instance" "forseti_security" {
   name             = "${local.instance_name}"
   database_version = "${var.cloudsql_database_version}"
   project          = "${local.project_id}"
-  region           = "${var.regions[1]}"
+  region           = "${local.region}"
 
   settings {
     activation_policy = "${var.cloudsql_settings["activation-policy"]}"

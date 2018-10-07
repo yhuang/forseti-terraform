@@ -46,6 +46,8 @@ machine_type = "f1-micro"
 
 network_tier = "STANDARD"
 
+region = "us-central1"
+
 sendgrid_api_key = ""
 
 subnetwork_cidr_ranges = {

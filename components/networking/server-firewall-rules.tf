@@ -51,8 +51,8 @@ resource "google_compute_firewall" "a_all_to_forseti_security_server" {
   ]
 }
 
-resource "google_compute_firewall" "a_forseti_security_subnetwork_to_forseti_security_server" {
-  name    = "a--forseti-security-subnetwork--to--forseti-security-server"
+resource "google_compute_firewall" "a_forseti_security_subnetworks_to_forseti_security_server" {
+  name    = "a--forseti-security-subnetworks--to--forseti-security-server"
   network = "${local.network}"
   project = "${local.project_id}"
 
@@ -67,7 +67,7 @@ resource "google_compute_firewall" "a_forseti_security_subnetwork_to_forseti_sec
   }
 
   source_ranges = [
-    "${var.subnetwork_cidr_ranges[var.regions[1]]}",
+    "${values(var.subnetwork_cidr_ranges)}",
   ]
 
   target_service_accounts = [
