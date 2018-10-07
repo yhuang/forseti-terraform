@@ -13,8 +13,8 @@ terraform {
 
 # https://github.com/hashicorp/terraform/pull/12223
 data "google_compute_image" "latest_forseti_security_image" {
-  project   = "${local.project_id}"
-  family    = "${var.project_name_base}"
+  project = "${var.trusted_images_project_id}"
+  family  = "${var.project_name_base}"
 }
 
 data "terraform_remote_state" "bucket" {

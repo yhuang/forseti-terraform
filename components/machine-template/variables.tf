@@ -18,3 +18,6 @@ variable "states_bucket_base" {}
 variable "subnetwork_cidr_ranges" {
   type = "map"
 }
+
+# export TF_VAR_trusted_images_project_id
+variable "trusted_images_project_id" {}

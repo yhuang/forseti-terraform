@@ -52,3 +52,6 @@ variable "subnetwork_cidr_ranges" {
 variable "system_configuration" {
   type = "map"
 }
+
+# export TF_VAR_trusted_images_project_id
+variable "trusted_images_project_id" {}

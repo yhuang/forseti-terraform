@@ -6,7 +6,7 @@ resource "google_compute_instance" "server" {
 
   boot_disk {
     initialize_params {
-      image = "${local.image_family}"
+      image = "${local.image_self_link}"
     }
   }
 
