@@ -1,12 +1,14 @@
+// "cloudasset.googleapis.com"
+
 apis = [
   "admin.googleapis.com",
   "appengine.googleapis.com",
   "bigquery-json.googleapis.com",
-  "cloudasset.googleapis.com",
   "cloudbilling.googleapis.com",
   "cloudresourcemanager.googleapis.com",
   "deploymentmanager.googleapis.com",
   "iam.googleapis.com",
+  "pubsub.googleapis.com",
   "servicemanagement.googleapis.com",
   "serviceusage.googleapis.com",
   "sql-component.googleapis.com",
@@ -14,13 +16,13 @@ apis = [
   "storage-api.googleapis.com",
 
   "compute.googleapis.com",
-  "container.googleapis.com",
-  "containerregistry.googleapis.com",
   "oslogin.googleapis.com",
-  "pubsub.googleapis.com",
   "replicapool.googleapis.com",
   "replicapoolupdater.googleapis.com",
   "resourceviews.googleapis.com",
+
+  "container.googleapis.com",
+  "containerregistry.googleapis.com",
 ]
 
 availability_zones = {

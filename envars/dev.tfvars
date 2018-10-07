@@ -30,8 +30,6 @@ email_recipient = ""
 
 email_sender = ""
 
-enable_os_login = "TRUE"
-
 forseti_security_services = [
   "explain",
   "inventory",
