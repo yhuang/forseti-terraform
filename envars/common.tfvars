@@ -62,6 +62,7 @@ iam_roles = {
   "browser"                           = "roles/browser"
   "cloudsql-client"                   = "roles/cloudsql.client"
   "cloudsql-viewer"                   = "roles/cloudsql.viewer"
+  "compute-imageUser"                 = "roles/compute.imageUser"
   "compute-networkViewer"             = "roles/compute.networkViewer"
   "compute-securityAdmin"             = "roles/compute.securityAdmin"
   "iam-serviceAccountTokenCreator"    = "roles/iam.serviceAccountTokenCreator"

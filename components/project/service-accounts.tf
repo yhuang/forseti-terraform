@@ -136,3 +136,14 @@ resource "google_service_account_iam_binding" "serviceAccountTokenCreator" {
     "serviceAccount:${local.server_service_account}",
   ]
 }
+
+resource "google_project_iam_binding" "compute_image_user" {
+  project = "${var.trusted_images_project_id}"
+  role    = "${var.iam_roles["compute-imageUser"]}"
+
+  members = [
+    "serviceAccount:${local.terraform_admin}",
+    "serviceAccount:${local.server_service_account}",
+    "serviceAccount:${local.client_service_account}",
+  ]
+}
