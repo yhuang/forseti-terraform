@@ -4,7 +4,7 @@ locals {
   project_id                = "${data.terraform_remote_state.project.project_id}"
   region                    = "${var.regions[var.region]}"
   server_name               = "${var.project_name_base}-server"
-  server_service_account    = "${data.terraform_remote_state.project.client_service_account}"
+  server_service_account    = "${data.terraform_remote_state.project.server_service_account}"
   startup_script            = "${data.template_file.configure_forseti_security_server.rendered}"
   states_bucket             = "${var.environment}-${var.project_name_base}-${var.states_bucket_base}"
   template_self_link        = "${data.terraform_remote_state.machine_template.self_link}"

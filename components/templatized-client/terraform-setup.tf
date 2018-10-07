@@ -32,7 +32,7 @@ data "terraform_remote_state" "server" {
 
   config {
     bucket = "${local.states_bucket}"
-    prefix = "components/server"
+    prefix = "components/templatized-server"
   }
 }
 
