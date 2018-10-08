@@ -29,13 +29,13 @@ variable "regions" {
   type = "map"
 }
 
-variable "sendgrid_api_key" {}
-
-variable "service_accounts" {
+variable "scopes" {
   type = "map"
 }
 
-variable "scopes" {
+variable "sendgrid_api_key" {}
+
+variable "service_accounts" {
   type = "map"
 }
 

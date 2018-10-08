@@ -1,21 +1,16 @@
-resource "google_compute_firewall" "d_all_to_forseti_security_client" {
-  name    = "d--all--to--forseti-security-client"
-  network = "${local.network}"
-  project = "${local.project_id}"
+resource "google_compute_firewall" "a_all_to_forseti_security_client" {
+  name    = "a--all--to--forseti-security-client"
 
   direction = "INGRESS"
-  priority  = 200
+  network = "${local.network}"
+  priority  = 100
+  project = "${local.project_id}"
 
-  deny {
-    protocol = "icmp"
-  }
-
-  deny {
+  allow {
     protocol = "tcp"
-  }
-
-  deny {
-    protocol = "udp"
+    ports    = [
+      "22"
+    ]
   }
 
   source_ranges = [
@@ -27,19 +22,24 @@ resource "google_compute_firewall" "d_all_to_forseti_security_client" {
   ]
 }
 
-resource "google_compute_firewall" "a_all_to_forseti_security_client" {
-  name    = "a--all--to--forseti-security-client"
-  network = "${local.network}"
-  project = "${local.project_id}"
+resource "google_compute_firewall" "d_all_to_forseti_security_client" {
+  name    = "d--all--to--forseti-security-client"
 
   direction = "INGRESS"
-  priority  = 100
+  network = "${local.network}"
+  priority  = 200
+  project = "${local.project_id}"
 
-  allow {
+  deny {
+    protocol = "icmp"
+  }
+
+  deny {
     protocol = "tcp"
-    ports    = [
-      "22"
-    ]
+  }
+
+  deny {
+    protocol = "udp"
   }
 
   source_ranges = [

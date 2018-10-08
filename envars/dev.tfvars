@@ -1,8 +1,8 @@
 bucket_policy = {
+  "force-destroy" = true
   "location"      = "US"
   "storage-class" = "MULTI_REGIONAL"
   "versioning"    = true
-  "force-destroy" = true
 }
 
 cloudsql_authorized_networks = []

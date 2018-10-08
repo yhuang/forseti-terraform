@@ -1,9 +1,9 @@
-output "org_id" {
-  value = "${google_project.forseti_security.org_id}"
-}
-
 output "client_service_account" {
   value = "${google_service_account.client.email}"
+}
+
+output "org_id" {
+  value = "${google_project.forseti_security.org_id}"
 }
 
 output "project_id" {

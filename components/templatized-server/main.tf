@@ -5,15 +5,15 @@ resource "google_compute_instance_from_template" "server" {
   project      = "${local.project_id}"
   zone         = "${local.zone}"
 
+  metadata {
+    startup-script = "${local.startup_script}"
+  }
+  
   service_account {
     email = "${local.server_service_account}"
 
     scopes = [
       "${var.scopes["all-api-access"]}",
     ]
-  }
-
-  metadata {
-    startup-script = "${local.startup_script}"
   }
 }

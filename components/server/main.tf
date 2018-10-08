@@ -1,5 +1,6 @@
 resource "google_compute_instance" "server" {
   name         = "${local.server_name}"
+
   machine_type = "${var.machine_type}"
   project      = "${local.project_id}"
   zone         = "${local.zone}"
@@ -8,6 +9,10 @@ resource "google_compute_instance" "server" {
     initialize_params {
       image = "${local.image_self_link}"
     }
+  }
+
+  metadata {
+    startup-script = "${local.startup_script}"
   }
 
   network_interface {
@@ -26,9 +31,5 @@ resource "google_compute_instance" "server" {
     scopes = [
       "${var.scopes["all-api-access"]}",
     ]
-  }
-
-  metadata {
-    startup-script = "${local.startup_script}"
   }
 }

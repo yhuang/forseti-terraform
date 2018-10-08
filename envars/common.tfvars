@@ -68,11 +68,11 @@ iam_roles = {
   "iam-serviceAccountTokenCreator"    = "roles/iam.serviceAccountTokenCreator"
   "iam-securityReviewer"              = "roles/iam.securityReviewer"
   "logging-logWriter"                 = "roles/logging.logWriter"
+  "servicemanagement-quotaViewer"     = "roles/servicemanagement.quotaViewer"
+  "serviceusage-serviceUsageConsumer" = "roles/serviceusage.serviceUsageConsumer"
   "storage-objectAdmin"               = "roles/storage.objectAdmin"
   "storage-objectCreator"             = "roles/storage.objectCreator"
   "storage-objectViewer"              = "roles/storage.objectViewer"
-  "servicemanagement-quotaViewer"     = "roles/servicemanagement.quotaViewer"
-  "serviceusage-serviceUsageConsumer" = "roles/serviceusage.serviceUsageConsumer"
 }
 
 os = "centos"

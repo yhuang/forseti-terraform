@@ -1,5 +1,6 @@
 resource "google_compute_instance_template" "forseti_security" {
   name         = "${local.image_name}"
+  
   machine_type = "${var.machine_type}"
   project      = "${local.project_id}"
 
