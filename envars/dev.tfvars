@@ -38,10 +38,6 @@ forseti_security_services = [
   "scanner",
 ]
 
-known_ips = {
-  "all" = "0.0.0.0/0"
-}
-
 machine_type = "f1-micro"
 
 network_tier = "STANDARD"

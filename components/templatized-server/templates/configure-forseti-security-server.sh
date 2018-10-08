@@ -94,7 +94,7 @@ systemctl start $CLOUDSQL_PROXY_SERVICE
 systemctl start $FORSETI_SERVICE
 
 RUN_FORSETI_SECURITY_SUITE_SH=${run_forseti_security_suite_sh}
-LOCK_FILE=$FORSETI_INSTALL_DIR/cron-runner.lock
+LOCK_FILE=/tmp/forseti-security-cron-runner.lock
 WARNING="WARNING: New Forseti cron job will not be started, because the previous one is still running."
 
 cat << 'EOF' > $RUN_FORSETI_SECURITY_SUITE_SH
@@ -112,7 +112,7 @@ chmod 755 $RUN_FORSETI_SECURITY_SUITE_SH
 #
 # If the cron job failed the acquire lock on the process, it will log a warning message to syslog.
 
-(echo "${run_frequency} (${flock} -n $LOCK_FILE $RUN_FORSETI_SECURITY_SUITE_SH || echo $WARNING) 2>&1 | logger") | crontab -u $USER -
+(echo "${run_frequency} (${flock} -n $LOCK_FILE $RUN_FORSETI_SECURITY_SUITE_SH || echo \"$WARNING\") 2>&1 | logger") | crontab -u $USER -
 echo "Added $RUN_FORSETI_SECURITY_SUITE_SH to crontab under user $USER."
 
 echo "Execution of startup script finished."

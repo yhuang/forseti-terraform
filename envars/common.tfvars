@@ -75,6 +75,27 @@ iam_roles = {
   "storage-objectViewer"              = "roles/storage.objectViewer"
 }
 
+# Source IP ranges for legacy HTTP(S) Load Balancing healt checks:
+#   35.191.0.0/16
+#   130.211.0.0/22
+
+# Source IP ranges for legacy Network Load Balancing health checks:
+#   35.191.0.0/16
+#   209.85.152.0/22
+#   209.85.204.0/22
+
+known_ips = {
+  "all" = [
+    "0.0.0.0/0"
+  ]
+  "health-check" = [
+    "35.191.0.0/16",
+    "130.211.0.0/22",
+    "209.85.152.0/22",
+    "209.85.204.0/22"
+  ]
+}
+
 os = "centos"
 
 project_name_base = "forseti-security"
