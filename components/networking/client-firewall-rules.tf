@@ -1,5 +1,5 @@
-resource "google_compute_firewall" "a_all_to_forseti_security_client" {
-  name    = "a--all--to--forseti-security-client"
+resource "google_compute_firewall" "a_all_to_forseti_client" {
+  name    = "a--all--to--forseti-client"
 
   direction = "INGRESS"
   network = "${local.network}"
@@ -22,8 +22,8 @@ resource "google_compute_firewall" "a_all_to_forseti_security_client" {
   ]
 }
 
-resource "google_compute_firewall" "d_all_to_forseti_security_client" {
-  name    = "d--all--to--forseti-security-client"
+resource "google_compute_firewall" "d_all_to_forseti_client" {
+  name    = "d--all--to--forseti-client"
 
   direction = "INGRESS"
   network = "${local.network}"

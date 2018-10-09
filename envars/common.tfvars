@@ -128,20 +128,20 @@ service_accounts = {
 }
 
 software = {
-  "cloudsql-proxy"                = "/usr/bin/cloudsql-proxy"
-  "date"                          = "/bin/date"
-  "flock"                         = "/usr/bin/flock"
-  "forseti-enforcer"              = "/usr/bin/forseti-enforcer"
-  "forseti-foreground-sh"         = "/usr/bin/forseti-foreground.sh"
-  "forseti-server"                = "/usr/bin/forseti-server"
-  "run-forseti-security-suite-sh" = "/usr/bin/run-forseti-security-suite.sh"
+  "cloudsql-proxy"        = "/usr/bin/cloudsql-proxy"
+  "date"                  = "/bin/date"
+  "flock"                 = "/usr/bin/flock"
+  "forseti-enforcer"      = "/usr/bin/forseti-enforcer"
+  "forseti-foreground-sh" = "/usr/bin/forseti-foreground.sh"
+  "forseti-server"        = "/usr/bin/forseti-server"
+  "run-forseti-suite-sh"  = "/usr/bin/run-forseti-suite.sh"
 }
 
 states_bucket_base = "terraform-states"
 
 system_configuration = {
-  "cloudsql-proxy-service"          = "/lib/systemd/system/cloudsql-proxy.service"
-  "forseti-install-dir"             = "/opt/forseti-security"
-  "forseti-security-environment-sh" = "/etc/profile.d/forseti-security-environment.sh"
-  "forseti-service"                 = "/lib/systemd/system/forseti.service"
+  "cloudsql-proxy-service" = "/lib/systemd/system/cloudsql-proxy.service"
+  "forseti-install-dir"    = "/opt/forseti-security"
+  "forseti-environment-sh" = "/etc/profile.d/forseti-environment.sh"
+  "forseti-service"        = "/lib/systemd/system/forseti.service"
 }

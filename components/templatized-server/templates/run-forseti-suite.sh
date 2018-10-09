@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ${forseti_security_environment_sh}
+source ${forseti_environment_sh}
 
 # set -x enables a mode of the shell where all executed commands are printed to the terminal.
 # With this  enabled, we should not put anything private/secret in the commands called because

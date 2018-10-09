@@ -5,7 +5,7 @@ variable "availability_zones" {
 # export TF_VAR_environment
 variable "environment" {}
 
-variable "forseti_security_services" {
+variable "forseti_services" {
   type = "list"
 }
 

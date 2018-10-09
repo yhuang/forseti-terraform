@@ -2,7 +2,7 @@ resource "random_id" "string" {
   byte_length = "${var.byte_length}"
 }
 
-resource "google_project" "forseti_security" {
+resource "google_project" "forseti" {
   name                = "${var.environment}-${var.project_name_base}"
 
   auto_create_network = "false"

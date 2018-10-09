@@ -30,7 +30,7 @@ email_recipient = ""
 
 email_sender = ""
 
-forseti_security_services = [
+forseti_services = [
   "explain",
   "inventory",
   "model",

@@ -12,7 +12,7 @@ terraform {
 }
 
 # https://github.com/hashicorp/terraform/pull/12223
-data "google_compute_image" "latest_forseti_security_image" {
+data "google_compute_image" "latest_forseti_image" {
   project = "${var.trusted_images_project_id}"
   family  = "${var.project_name_base}"
 }
@@ -61,7 +61,7 @@ data "template_file" "forseti_conf_server_yaml" {
     email_recipient          = "${var.email_recipient}"
     email_sender             = "${var.email_sender}"
     forseti_install_dir      = "${var.system_configuration["forseti-install-dir"]}"
-    forseti_security_bucket  = "${data.terraform_remote_state.bucket.name}"
+    forseti_bucket           = "${data.terraform_remote_state.bucket.name}"
     org_id                   = "${data.terraform_remote_state.project.org_id}"
     sendgrid_api_key         = "${var.sendgrid_api_key}"
     user                     = "${var.os}"
@@ -81,36 +81,36 @@ data "template_file" "run_frequency" {
   }
 }
 
-data "template_file" "run_forseti_security_suite" {
-  template = "${file("${path.module}/templates/run-forseti-security-suite.sh")}"
+data "template_file" "run_forseti_suite" {
+  template = "${file("${path.module}/templates/run-forseti-suite.sh")}"
 
   vars {
-    date                            = "${var.software["date"]}"
-    forseti_security_environment_sh = "${var.system_configuration["forseti-security-environment-sh"]}"
+    date                   = "${var.software["date"]}"
+    forseti_environment_sh = "${var.system_configuration["forseti-environment-sh"]}"
   }
 }
 
-data "template_file" "configure_forseti_security_server" {
-  template = "${file("${path.module}/templates/configure-forseti-security-server.sh")}"
+data "template_file" "configure_forseti_server" {
+  template = "${file("${path.module}/templates/configure-forseti-server.sh")}"
 
   vars {
-    cloudsql_connection_name        = "${data.terraform_remote_state.database.connection_name}"
-    cloudsql_database_name          = "${local.database_name}"
-    cloudsql_database_port          = "${var.cloudsql_database_port}"
-    cloudsql_proxy                  = "${var.software["cloudsql-proxy"]}"
-    cloudsql_proxy_service          = "${var.system_configuration["cloudsql-proxy-service"]}"
-    flock                           = "${var.software["flock"]}"
-    forseti_conf_server_yaml        = "${data.template_file.forseti_conf_server_yaml.rendered}"
-    forseti_foreground_sh           = "${var.software["forseti-foreground-sh"]}"
-    forseti_install_dir             = "${var.system_configuration["forseti-install-dir"]}"
-    forseti_security_bucket         = "${data.terraform_remote_state.bucket.name}"
-    forseti_security_environment_sh = "${var.system_configuration["forseti-security-environment-sh"]}"
-    forseti_security_services       = "${local.forseti_security_services}"
-    forseti_server                  = "${var.software["forseti-server"]}"
-    forseti_service                 = "${var.system_configuration["forseti-service"]}"
-    run_forseti_security_suite      = "${data.template_file.run_forseti_security_suite.rendered}"
-    run_forseti_security_suite_sh   = "${var.software["run-forseti-security-suite-sh"]}"
-    run_frequency                   = "${chomp(data.template_file.run_frequency.rendered)}"
-    user                            = "${var.os}"
+    cloudsql_connection_name = "${data.terraform_remote_state.database.connection_name}"
+    cloudsql_database_name   = "${local.database_name}"
+    cloudsql_database_port   = "${var.cloudsql_database_port}"
+    cloudsql_proxy           = "${var.software["cloudsql-proxy"]}"
+    cloudsql_proxy_service   = "${var.system_configuration["cloudsql-proxy-service"]}"
+    flock                    = "${var.software["flock"]}"
+    forseti_conf_server_yaml = "${data.template_file.forseti_conf_server_yaml.rendered}"
+    forseti_foreground_sh    = "${var.software["forseti-foreground-sh"]}"
+    forseti_install_dir      = "${var.system_configuration["forseti-install-dir"]}"
+    forseti_bucket           = "${data.terraform_remote_state.bucket.name}"
+    forseti_environment_sh   = "${var.system_configuration["forseti-environment-sh"]}"
+    forseti_services         = "${local.forseti_services}"
+    forseti_server           = "${var.software["forseti-server"]}"
+    forseti_service          = "${var.system_configuration["forseti-service"]}"
+    run_forseti_suite        = "${data.template_file.run_forseti_suite.rendered}"
+    run_forseti_suite_sh     = "${var.software["run-forseti-suite-sh"]}"
+    run_frequency            = "${chomp(data.template_file.run_frequency.rendered)}"
+    user                     = "${var.os}"
   }
 }

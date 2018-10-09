@@ -10,7 +10,7 @@ terraform {
 }
 
 # https://github.com/hashicorp/terraform/pull/12223
-data "google_compute_image" "latest_forseti_security_image" {
+data "google_compute_image" "latest_forseti_image" {
   family  = "${var.project_name_base}"
   project = "${var.trusted_images_project_id}"
 }
@@ -50,12 +50,12 @@ data "template_file" "forseti_conf_client_yaml" {
   }
 }
 
-data "template_file" "configure_forseti_security_client" {
-  template = "${file("${path.module}/templates/configure-forseti-security-client.sh")}"
+data "template_file" "configure_forseti_client" {
+  template = "${file("${path.module}/templates/configure-forseti-client.sh")}"
 
   vars {
-    forseti_conf_client_yaml        = "${data.template_file.forseti_conf_client_yaml.rendered}"
-    forseti_install_dir             = "${var.system_configuration["forseti-install-dir"]}"
-    forseti_security_environment_sh = "${var.system_configuration["forseti-security-environment-sh"]}"
+    forseti_conf_client_yaml = "${data.template_file.forseti_conf_client_yaml.rendered}"
+    forseti_install_dir      = "${var.system_configuration["forseti-install-dir"]}"
+    forseti_environment_sh   = "${var.system_configuration["forseti-environment-sh"]}"
   }
 }

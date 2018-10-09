@@ -1,5 +1,5 @@
-resource "google_compute_firewall" "a_all_to_forseti_security_server" {
-  name    = "a--all--to--forseti-security-server"
+resource "google_compute_firewall" "a_all_to_forseti_server" {
+  name    = "a--all--to--forseti-server"
 
   direction = "INGRESS"
   network = "${local.network}"
@@ -22,8 +22,8 @@ resource "google_compute_firewall" "a_all_to_forseti_security_server" {
   ]
 }
 
-resource "google_compute_firewall" "a_forseti_security_subnetworks_to_forseti_security_server" {
-  name    = "a--forseti-security-subnetworks--to--forseti-security-server"
+resource "google_compute_firewall" "a_forseti_subnetworks_to_forseti_server" {
+  name    = "a--forseti-subnetworks--to--forseti-server"
 
   direction = "INGRESS"
   network = "${local.network}"
@@ -46,8 +46,8 @@ resource "google_compute_firewall" "a_forseti_security_subnetworks_to_forseti_se
   ]
 }
 
-resource "google_compute_firewall" "d_all_to_forseti_security_server" {
-  name    = "d--all--to--forseti-security-server"
+resource "google_compute_firewall" "d_all_to_forseti_server" {
+  name    = "d--all--to--forseti-server"
 
   direction = "INGRESS"
   network = "${local.network}"

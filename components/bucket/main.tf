@@ -1,4 +1,4 @@
-resource "google_storage_bucket" "forseti_security_bucket" {
+resource "google_storage_bucket" "forseti_bucket" {
   force_destroy = "${var.bucket_policy["force-destroy"]}"
   location      = "${var.bucket_policy["location"]}"
   name          = "${local.project_id}"

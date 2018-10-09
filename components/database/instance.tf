@@ -2,7 +2,7 @@ resource "random_id" "string" {
   byte_length = "${var.byte_length}"
 }
 
-resource "google_sql_database_instance" "forseti_security" {
+resource "google_sql_database_instance" "forseti" {
   name             = "${local.instance_name}"
   database_version = "${var.cloudsql_database_version}"
   project          = "${local.project_id}"
