@@ -11,6 +11,10 @@ resource "google_compute_instance" "client" {
     }
   }
 
+  metadata {
+    startup-script = "${local.startup_script}"
+  }
+  
   network_interface {
     subnetwork         = "${local.subnetwork}"
     subnetwork_project = "${local.project_id}"
@@ -27,9 +31,5 @@ resource "google_compute_instance" "client" {
     scopes = [
       "${var.scopes["all-api-access"]}",
     ]
-  }
-
-  metadata {
-    startup-script = "${local.startup_script}"
   }
 }
