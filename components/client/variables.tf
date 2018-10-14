@@ -2,8 +2,8 @@ variable "availability_zones" {
   type = "map"
 }
 
-# export TF_VAR_environment
-variable "environment" {}
+# export TF_VAR_forseti_security_states_bucket
+variable "forseti_security_states_bucket" {}
 
 variable "forseti_services" {
   type = "list"
@@ -28,8 +28,6 @@ variable "scopes" {
 variable "software" {
   type = "map"
 }
-
-variable "states_bucket_base" {}
 
 variable "system_configuration" {
   type = "map"

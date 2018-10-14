@@ -51,7 +51,7 @@ data "template_file" "forseti_conf_server_yaml" {
   template = "${file("${path.module}/templates/forseti-conf-server.yaml")}"
 
   vars {
-    domain_super_admin_email = "${var.service_accounts["g-suite-groups-auditor"]}"
+    domain_super_admin_email = "${var.g_suite_groups_auditor}"
     email_recipient          = "${var.email_recipient}"
     email_sender             = "${var.email_sender}"
     forseti_install_dir      = "${var.system_configuration["forseti-install-dir"]}"

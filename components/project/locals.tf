@@ -4,5 +4,4 @@ locals {
   project_id                = "${google_project.forseti.project_id}"
   server_service_account    = "${google_service_account.server.email}"
   server_service_account_id = "${google_service_account.server.id}"
-  terraform_admin           = "${var.service_accounts["terraform-admin"]}"
 }

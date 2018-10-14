@@ -8,12 +8,15 @@ variable "email_recipient" {}
 
 variable "email_sender" {}
 
-# export TF_VAR_environment
-variable "environment" {}
+# export TF_VAR_forseti_security_states_bucket
+variable "forseti_security_states_bucket" {}
 
 variable "forseti_services" {
   type = "list"
 }
+
+# export TF_VAR_g_suite_groups_auditor
+variable "g_suite_groups_auditor" {}
 
 variable "machine_type" {}
 
@@ -35,15 +38,9 @@ variable "scopes" {
 
 variable "sendgrid_api_key" {}
 
-variable "service_accounts" {
-  type = "map"
-}
-
 variable "software" {
   type = "map"
 }
-
-variable "states_bucket_base" {}
 
 variable "subnetwork_cidr_ranges" {
   type = "map"

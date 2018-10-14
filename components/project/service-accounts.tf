@@ -142,7 +142,6 @@ resource "google_project_iam_binding" "compute_image_user" {
   role    = "${var.iam_roles["compute-imageUser"]}"
 
   members = [
-    "serviceAccount:${local.terraform_admin}",
     "serviceAccount:${local.server_service_account}",
     "serviceAccount:${local.client_service_account}",
   ]

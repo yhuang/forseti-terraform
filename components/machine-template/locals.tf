@@ -4,6 +4,6 @@ locals {
   network         = "${data.terraform_remote_state.networking.network_self_link}"
   project_id      = "${data.terraform_remote_state.project.project_id}"
   region          = "${var.regions[var.region]}"
-  states_bucket   = "${var.environment}-${var.project_name_base}-${var.states_bucket_base}"
+  states_bucket   = "${var.forseti_security_states_bucket}"
   subnetwork      = "${data.terraform_remote_state.networking.subnetwork_self_links[local.region]}"
 }

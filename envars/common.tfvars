@@ -111,22 +111,6 @@ scopes = {
   "all-api-access" = "https://www.googleapis.com/auth/cloud-platform"
 }
 
-# https://forsetisecurity.org/docs/howto/configure/gsuite-group-collection.html
-#
-# Create g-suite-groups-auditor service account out of band
-# Enable G Suite Domain-wide Delegation
-# Product name for the consent screen:  Terraform Org Admin
-#
-# https://admin.google.com/ManageOauthClients
-#
-# Enter the Client ID for service account client as Client Name with the following API scopes:
-# https://www.googleapis.com/auth/admin.directory.group.readonly,https://www.googleapis.com/auth/admin.directory.user.readonly
-
-service_accounts = {
-  "g-suite-groups-auditor" = "g-suite-groups-auditor@terraform-org-admin.iam.gserviceaccount.com"
-  "terraform-admin"        = "terraform-service-user@terraform-org-admin.iam.gserviceaccount.com"
-}
-
 software = {
   "cloudsql-proxy"        = "/usr/bin/cloudsql-proxy"
   "date"                  = "/bin/date"
@@ -136,8 +120,6 @@ software = {
   "forseti-server"        = "/usr/bin/forseti-server"
   "run-forseti-suite-sh"  = "/usr/bin/run-forseti-suite.sh"
 }
-
-states_bucket_base = "terraform-states"
 
 system_configuration = {
   "cloudsql-proxy-service" = "/lib/systemd/system/cloudsql-proxy.service"
