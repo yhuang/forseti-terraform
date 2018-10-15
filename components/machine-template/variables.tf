@@ -3,7 +3,9 @@ variable "forseti_security_states_bucket" {}
 
 variable "machine_type" {}
 
-variable "network_tier" {}
+variable "network_tiers" {
+  type = "map"
+}
 
 variable "project_name_base" {}
 

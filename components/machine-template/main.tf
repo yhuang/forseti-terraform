@@ -15,7 +15,7 @@ resource "google_compute_instance_template" "forseti" {
     subnetwork_project = "${local.project_id}"
 
     access_config {
-      network_tier = "${var.network_tier}"
+      network_tier = "${local.network_tier}"
       // Ephemeral External IP
     }
   }

@@ -20,7 +20,9 @@ variable "g_suite_groups_auditor" {}
 
 variable "machine_type" {}
 
-variable "network_tier" {}
+variable "network_tiers" {
+  type = "map"
+}
 
 variable "os" {}
 

@@ -40,9 +40,7 @@ forseti_services = [
 
 machine_type = "f1-micro"
 
-network_tier = "STANDARD"
-
-region = "us-west1"
+region = "us-east4"
 
 sendgrid_api_key = ""
 

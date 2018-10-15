@@ -3,6 +3,7 @@ locals {
   forseti_services       = "${join(" ", var.forseti_services)}"
   image_self_link        = "${data.google_compute_image.latest_forseti_image.self_link}"
   network                = "${data.terraform_remote_state.networking.network_self_link}"
+  network_tier           = "${var.network_tiers[var.region]}"
   project_id             = "${data.terraform_remote_state.project.project_id}"
   region                 = "${var.regions[var.region]}"
   server_name            = "${var.project_name_base}-server"

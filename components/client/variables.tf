@@ -11,7 +11,9 @@ variable "forseti_services" {
 
 variable "machine_type" {}
 
-variable "network_tier" {}
+variable "network_tiers" {
+  type = "map"
+}
 
 variable "project_name_base" {}
 

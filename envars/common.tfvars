@@ -95,6 +95,13 @@ known_ips = {
   ]
 }
 
+network_tiers = {
+  "us-west1"    = "PREMIUM"
+  "us-central1" = "STANDARD"
+  "us-east1"    = "STANDARD"
+  "us-east4"    = "PREMIUM"
+}
+
 os = "centos"
 
 project_name_base = "forseti-security"
