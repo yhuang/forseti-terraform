@@ -27,20 +27,20 @@ apis = [
 
 availability_zones = {
   "us-west1" = [
-    "us-central1-a",
-    "us-central1-b",
+    "us-west1-a",
+    "us-west1-b",
   ]
   "us-central1" = [
     "us-central1-b",
     "us-central1-f",
   ]
   "us-east1" = [
-    "us-central1-c",
-    "us-central1-d",
+    "us-east1-c",
+    "us-east1-d",
   ]
   "us-east4" = [
-    "us-central1-a",
-    "us-central1-b",
+    "us-east4-a",
+    "us-east4-b",
   ]
 }
 

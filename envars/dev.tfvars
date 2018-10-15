@@ -42,7 +42,7 @@ machine_type = "f1-micro"
 
 network_tier = "STANDARD"
 
-region = "us-central1"
+region = "us-west1"
 
 sendgrid_api_key = ""
 
