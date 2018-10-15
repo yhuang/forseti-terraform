@@ -53,7 +53,6 @@ cloudsql_database_version = "MYSQL_5_7"
 forseti_roles = {
   "client"                 = "client"
   "server"                 = "server"
-  "g-suite-groupd-auditor" = "g-suite-groupd-auditor"
 }
 
 iam_roles = {
