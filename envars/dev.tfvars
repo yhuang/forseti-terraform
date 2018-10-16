@@ -40,7 +40,7 @@ forseti_services = [
 
 machine_type = "f1-micro"
 
-region = "us-east4"
+region = "us-central1"
 
 sendgrid_api_key = ""
 
