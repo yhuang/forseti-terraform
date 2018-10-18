@@ -51,27 +51,47 @@ cloudsql_database_port = 3306
 cloudsql_database_version = "MYSQL_5_7"
 
 forseti_roles = {
-  "client"                 = "client"
-  "server"                 = "server"
+  "client" = "client"
+  "server" = "server"
 }
 
 iam_roles = {
-  "appengine-appViewer"               = "roles/appengine.appViewer"
-  "bigquery-dataViewer"               = "roles/bigquery.dataViewer"
-  "browser"                           = "roles/browser"
-  "cloudsql-client"                   = "roles/cloudsql.client"
-  "cloudsql-viewer"                   = "roles/cloudsql.viewer"
-  "compute-imageUser"                 = "roles/compute.imageUser"
-  "compute-networkViewer"             = "roles/compute.networkViewer"
-  "compute-securityAdmin"             = "roles/compute.securityAdmin"
-  "iam-serviceAccountTokenCreator"    = "roles/iam.serviceAccountTokenCreator"
-  "iam-securityReviewer"              = "roles/iam.securityReviewer"
-  "logging-logWriter"                 = "roles/logging.logWriter"
-  "servicemanagement-quotaViewer"     = "roles/servicemanagement.quotaViewer"
-  "serviceusage-serviceUsageConsumer" = "roles/serviceusage.serviceUsageConsumer"
-  "storage-objectAdmin"               = "roles/storage.objectAdmin"
-  "storage-objectCreator"             = "roles/storage.objectCreator"
-  "storage-objectViewer"              = "roles/storage.objectViewer"
+  "appengine" = {
+    "appViewer" = "roles/appengine.appViewer"
+  }
+  "bigquery" = {
+    "dataViewer" = "roles/bigquery.dataViewer"
+  }
+  "cloudsql" = {
+    "client" = "roles/cloudsql.client"
+    "viewer" = "roles/cloudsql.viewer"
+  }
+  "compute" = {
+    "imageUser"     = "roles/compute.imageUser"
+    "networkViewer" = "roles/compute.networkViewer"
+    "securityAdmin" = "roles/compute.securityAdmin"
+  }
+  "iam" = {
+    "serviceAccountTokenCreator" = "roles/iam.serviceAccountTokenCreator"
+    "securityReviewer"           = "roles/iam.securityReviewer"
+  }
+  "logging" = {
+    "logWriter" = "roles/logging.logWriter"
+  }
+  "primitive" = {
+    "browser" = "roles/browser"
+  }
+  "servicemanagement" = {
+    "quotaViewer" = "roles/servicemanagement.quotaViewer"
+  }
+  "serviceusage" = {
+    "serviceUsageConsumer" = "roles/serviceusage.serviceUsageConsumer"
+  }
+  "storage" = {
+    "objectAdmin"   = "roles/storage.objectAdmin"
+    "objectCreator" = "roles/storage.objectCreator"
+    "objectViewer"  = "roles/storage.objectViewer"
+  }
 }
 
 # Source IP ranges for legacy HTTP(S) Load Balancing healt checks:
@@ -91,7 +111,7 @@ known_ips = {
     "35.191.0.0/16",
     "130.211.0.0/22",
     "209.85.152.0/22",
-    "209.85.204.0/22"
+    "209.85.204.0/22",
   ]
 }
 
