@@ -137,19 +137,16 @@ scopes = {
   "all-api-access" = "https://www.googleapis.com/auth/cloud-platform"
 }
 
-software = {
-  "cloudsql-proxy"        = "/usr/bin/cloudsql-proxy"
-  "date"                  = "/bin/date"
-  "flock"                 = "/usr/bin/flock"
-  "forseti-enforcer"      = "/usr/bin/forseti-enforcer"
-  "forseti-foreground-sh" = "/usr/bin/forseti-foreground.sh"
-  "forseti-server"        = "/usr/bin/forseti-server"
-  "run-forseti-suite-sh"  = "/usr/bin/run-forseti-suite.sh"
-}
-
-system_configuration = {
+sysconfig = {
+  "cloudsql-proxy"         = "/usr/bin/cloudsql-proxy"
   "cloudsql-proxy-service" = "/lib/systemd/system/cloudsql-proxy.service"
-  "forseti-install-dir"    = "/opt/forseti-security"
+  "date"                   = "/bin/date"
+  "flock"                  = "/usr/bin/flock"
+  "forseti-enforcer"       = "/usr/bin/forseti-enforcer"
   "forseti-environment-sh" = "/etc/profile.d/forseti-environment.sh"
+  "forseti-foreground-sh"  = "/usr/bin/forseti-foreground.sh"
+  "forseti-install-dir"    = "/opt/forseti-security"
+  "forseti-server"         = "/usr/bin/forseti-server"
   "forseti-service"        = "/lib/systemd/system/forseti.service"
+  "run-forseti-suite-sh"   = "/usr/bin/run-forseti-suite.sh"
 }

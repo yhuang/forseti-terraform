@@ -2,7 +2,7 @@ resource "google_compute_firewall" "a_all_to_forseti_client" {
   name    = "a--all--to--forseti-client"
 
   direction = "INGRESS"
-  network = "${local.network}"
+  network = "${local.network_self_link}"
   priority  = 100
   project = "${local.project_id}"
 
@@ -26,7 +26,7 @@ resource "google_compute_firewall" "d_all_to_forseti_client" {
   name    = "d--all--to--forseti-client"
 
   direction = "INGRESS"
-  network = "${local.network}"
+  network = "${local.network_self_link}"
   priority  = 200
   project = "${local.project_id}"
 

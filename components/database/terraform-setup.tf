@@ -2,11 +2,9 @@ provider "google" {
   region = "${local.region}"
 }
 
-provider "random" {}
-
 terraform {
   # terraform.required_version: cannot contain interpolations
-  required_version = ">= 0.11.8"
+  required_version = "< 0.12.0"
 
   backend "gcs" {}
 }

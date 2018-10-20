@@ -40,15 +40,11 @@ variable "scopes" {
 
 variable "sendgrid_api_key" {}
 
-variable "software" {
-  type = "map"
-}
-
 variable "subnetwork_cidr_ranges" {
   type = "map"
 }
 
-variable "system_configuration" {
+variable "sysconfig" {
   type = "map"
 }
 

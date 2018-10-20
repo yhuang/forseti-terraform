@@ -9,8 +9,6 @@ variable "iam_roles" {
   type = "map"
 }
 
-variable "project_name_base" {}
-
 variable "region" {}
 
 variable "regions" {

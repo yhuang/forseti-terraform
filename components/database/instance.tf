@@ -3,7 +3,7 @@ resource "random_id" "string" {
 }
 
 resource "google_sql_database_instance" "forseti" {
-  name             = "${local.instance_name}"
+  name             = "${var.project_name_base}-${random_id.string.hex}"
   database_version = "${var.cloudsql_database_version}"
   project          = "${local.project_id}"
   region           = "${local.region}"

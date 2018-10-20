@@ -3,10 +3,10 @@ resource "random_id" "string" {
 }
 
 resource "google_project" "forseti" {
-  name                = "${var.environment}-${var.project_name_base}"
+  name                = "${local.forseti_project_name}"
 
   auto_create_network = "false"
-  billing_account     = "${data.google_project.terraform_admin.billing_account}"
-  org_id              = "${data.google_project.terraform_admin.org_id}"
-  project_id          = "${var.environment}-${var.project_name_base}-${random_id.string.hex}"
+  billing_account     = "${local.billing_account}"
+  org_id              = "${local.org_id}"
+  project_id          = "${local.forseti_project_name}-${random_id.string.hex}"
 }

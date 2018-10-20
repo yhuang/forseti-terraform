@@ -3,7 +3,7 @@ provider "google" {}
 provider "random" {}
 
 terraform {
-  required_version = ">= 0.11.8"
+  required_version = "< 0.12.0"
 
   backend "gcs" {}
 }

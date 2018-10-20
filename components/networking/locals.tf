@@ -1,6 +1,6 @@
 locals {
   client_service_account = "${data.terraform_remote_state.project.client_service_account}"
-  network                = "${google_compute_network.forseti.name}"
+  network_self_link      = "${google_compute_network.forseti.self_link}"
   project_id             = "${data.terraform_remote_state.project.project_id}"
   server_service_account = "${data.terraform_remote_state.project.server_service_account}"
   states_bucket          = "${var.forseti_security_states_bucket}"

@@ -27,11 +27,7 @@ variable "scopes" {
   type = "map"
 }
 
-variable "software" {
-  type = "map"
-}
-
-variable "system_configuration" {
+variable "sysconfig" {
   type = "map"
 }
 
