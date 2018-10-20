@@ -1,5 +1,3 @@
-
-
 locals {
   billing_account            = "${data.google_project.terraform_admin.billing_account}"
   client_service_account     = "${google_service_account.client.email}"
