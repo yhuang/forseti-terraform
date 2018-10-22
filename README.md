@@ -68,3 +68,19 @@
     "status": "SUCCESS"
   }
   ```
+  
+  9. To target Forseti Security deployment to another region, simply change the `region` scalar variable in `envars/dev.tfvars` to another approved value enumerated in the `envars/common.tfvars` file.  The current map of approved regions is:
+  ```
+  regions = {
+    "us-west1"    = "us-west1"
+    "us-central1" = "us-central1"
+    "us-east1"    = "us-east1"
+    "us-east4"    = "us-east4"
+  }
+  ```
+  From the Forseti Terraform repo's root directory, once the new `region` value has been set:
+  ```
+  $ cd components
+  
+  for i in database server; do cd $i; terragrunt plan; terragrunt apply --auto-approve; cd ..; done
+  ```
