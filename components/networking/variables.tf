@@ -1,6 +1,3 @@
-# export TF_VAR_environment
-variable "environment" {}
-
 # export TF_VAR_forseti_security_states_bucket
 variable "forseti_security_states_bucket" {}
 

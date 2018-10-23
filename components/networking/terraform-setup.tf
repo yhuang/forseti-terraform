@@ -1,4 +1,5 @@
 provider "google" {}
+provider "google-beta" {}
 
 terraform {
   # terraform.required_version: cannot contain interpolations

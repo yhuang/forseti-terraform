@@ -45,7 +45,6 @@ region = "us-west1"
 sendgrid_api_key = ""
 
 subnetwork_cidr_ranges = {
-  "managed-services" = "10.240.0.0/24"
   "us-west1"         = "10.128.0.0/24"
   "us-central1"      = "10.129.0.0/24"
   "us-east1"         = "10.130.0.0/24"
