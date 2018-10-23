@@ -10,6 +10,7 @@ apis = [
   "iam.googleapis.com",
   "pubsub.googleapis.com",
   "servicemanagement.googleapis.com",
+  "servicenetworking.googleapis.com",
   "serviceusage.googleapis.com",
   "sql-component.googleapis.com",
   "sqladmin.googleapis.com",
