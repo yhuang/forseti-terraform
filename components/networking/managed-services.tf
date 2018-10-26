@@ -9,8 +9,24 @@ resource "google_compute_global_address" "managed_services" {
   purpose       = "VPC_PEERING"
 }
 
-resource "google_compute_network_peering" "managed_services" {
-  name = "managed-services"
-  network = "${local.network_self_link}"
-  peer_network = "${google_compute_global_address.managed_services.self_link}"
+resource "null_resource" "vpc_to_services_peering" {
+  provisioner "local-exec" {
+    command = <<EOF
+gcloud beta services vpc-peerings connect \
+--service=servicenetworking.googleapis.com \
+--network=${local.network_name} \
+--ranges=${google_compute_global_address.managed_services.name} \
+--project=${local.project_id};
+EOF
+  }
+
+  provisioner "local-exec" {
+    when = "destroy"
+
+    command = <<EOF
+gcloud compute networks peerings delete servicenetworking-googleapis-com \
+--network=${local.network_name} \
+--project=${local.project_id}
+EOF
+  }
 }

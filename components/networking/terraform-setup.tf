@@ -1,4 +1,5 @@
 provider "google" {}
+
 provider "google-beta" {}
 
 terraform {

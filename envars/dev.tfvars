@@ -13,7 +13,7 @@ cloudsql_backup_configuration = {
 }
 
 cloudsql_ip_configuration = {
-  "ipv4-enabled" = true
+  "ipv4-enabled" = false
   "require-ssl"  = true
 }
 
