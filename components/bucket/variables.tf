@@ -14,5 +14,3 @@ variable "region" {}
 variable "regions" {
   type = "map"
 }
-
-variable "terraform_admin_project_id" {}

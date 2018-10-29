@@ -5,10 +5,6 @@ variable "availability_zones" {
 # export TF_VAR_forseti_security_states_bucket
 variable "forseti_security_states_bucket" {}
 
-variable "forseti_services" {
-  type = "list"
-}
-
 variable "machine_type" {}
 
 variable "network_tiers" {

@@ -4,7 +4,6 @@ locals {
   forseti_conf_client_yaml = "${data.template_file.forseti_conf_client_yaml.rendered}"
   forseti_server_ip        = "${data.terraform_remote_state.server.internal_ip}"
   image_self_link          = "${data.google_compute_image.latest_forseti_image.self_link}"
-  network                  = "${data.terraform_remote_state.networking.network_self_link}"
   network_tier             = "${var.network_tiers[var.region]}"
   project_id               = "${data.terraform_remote_state.project.project_id}"
   region                   = "${var.regions[var.region]}"

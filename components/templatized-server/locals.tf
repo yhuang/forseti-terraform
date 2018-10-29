@@ -1,8 +1,10 @@
 locals {
   connection_name          = "${data.terraform_remote_state.database.connection_name}"
   database_name            = "${replace(var.project_name_base, "-", "_")}"
+  forseti_bucket           = "${data.terraform_remote_state.bucket.name}"
   forseti_conf_server_yaml = "${data.template_file.forseti_conf_server_yaml.rendered}"
   forseti_services         = "${join(" ", var.forseti_services)}"
+  org_id                   = "${data.terraform_remote_state.project.org_id}"
   project_id               = "${data.terraform_remote_state.project.project_id}"
   region                   = "${var.regions[var.region]}"
   run_forseti_suite        = "${data.template_file.run_forseti_suite.rendered}"

@@ -55,8 +55,8 @@ data "template_file" "forseti_conf_server_yaml" {
     email_recipient          = "${var.email_recipient}"
     email_sender             = "${var.email_sender}"
     forseti_install_dir      = "${var.sysconfig["forseti-install-dir"]}"
-    forseti_bucket           = "${data.terraform_remote_state.bucket.name}"
-    org_id                   = "${data.terraform_remote_state.project.org_id}"
+    forseti_bucket           = "${local.forseti_bucket}"
+    org_id                   = "${local.org_id}"
     sendgrid_api_key         = "${var.sendgrid_api_key}"
     user                     = "${var.os}"
   }
@@ -97,14 +97,14 @@ data "template_file" "configure_forseti_server" {
     forseti_conf_server_yaml = "${local.forseti_conf_server_yaml}"
     forseti_foreground_sh    = "${var.sysconfig["forseti-foreground-sh"]}"
     forseti_install_dir      = "${var.sysconfig["forseti-install-dir"]}"
-    forseti_bucket           = "${data.terraform_remote_state.bucket.name}"
+    forseti_bucket           = "${local.forseti_bucket}"
     forseti_environment_sh   = "${var.sysconfig["forseti-environment-sh"]}"
     forseti_services         = "${local.forseti_services}"
     forseti_server           = "${var.sysconfig["forseti-server"]}"
     forseti_service          = "${var.sysconfig["forseti-service"]}"
-    run_forseti_suite        = "${data.template_file.run_forseti_suite.rendered}"
+    run_forseti_suite        = "${local.run_forseti_suite}"
     run_forseti_suite_sh     = "${var.sysconfig["run-forseti-suite-sh"]}"
-    run_frequency            = "${chomp(data.template_file.run_frequency.rendered)}"
+    run_frequency            = "${local.run_frequency}"
     user                     = "${var.os}"
   }
 }
