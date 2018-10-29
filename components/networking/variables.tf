@@ -5,6 +5,8 @@ variable "known_ips" {
   type = "map"
 }
 
+variable "private_ip_google_access" {}
+
 variable "project_name_base" {}
 
 variable "regions" {

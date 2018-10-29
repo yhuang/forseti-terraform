@@ -40,6 +40,8 @@ forseti_services = [
 
 machine_type = "f1-micro"
 
+private_ip_google_access = true
+
 region = "us-west1"
 
 sendgrid_api_key = ""
