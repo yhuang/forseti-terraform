@@ -1,5 +1,5 @@
 resource "google_compute_instance" "server" {
-  name         = "${local.server_name}"
+  name = "${local.server_name}"
 
   machine_type = "${var.machine_type}"
   project      = "${local.project_id}"
@@ -21,6 +21,7 @@ resource "google_compute_instance" "server" {
 
     access_config {
       network_tier = "${local.network_tier}"
+
       // Ephemeral External IP
     }
   }

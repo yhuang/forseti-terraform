@@ -1,6 +1,6 @@
 resource "google_compute_global_address" "managed_services" {
-  name          = "managed-services"
-  provider      = "google-beta"
+  name     = "managed-services"
+  provider = "google-beta"
 
   address_type  = "INTERNAL"
   network       = "${local.network_self_link}"

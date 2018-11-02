@@ -4,6 +4,6 @@ resource "google_project_services" "api_services" {
   project = "${local.forseti_project_id}"
 
   services = [
-    "${var.apis}"
+    "${var.apis}",
   ]
 }

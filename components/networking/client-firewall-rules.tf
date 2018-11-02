@@ -1,15 +1,16 @@
 resource "google_compute_firewall" "a_all_to_forseti_client" {
-  name    = "a--all--to--forseti-client"
+  name = "a--all--to--forseti-client"
 
   direction = "INGRESS"
-  network = "${local.network_self_link}"
+  network   = "${local.network_self_link}"
   priority  = 100
-  project = "${local.project_id}"
+  project   = "${local.project_id}"
 
   allow {
     protocol = "tcp"
-    ports    = [
-      "22"
+
+    ports = [
+      "22",
     ]
   }
 
@@ -18,17 +19,17 @@ resource "google_compute_firewall" "a_all_to_forseti_client" {
   ]
 
   target_service_accounts = [
-    "${local.client_service_account}"
+    "${local.client_service_account}",
   ]
 }
 
 resource "google_compute_firewall" "d_all_to_forseti_client" {
-  name    = "d--all--to--forseti-client"
+  name = "d--all--to--forseti-client"
 
   direction = "INGRESS"
-  network = "${local.network_self_link}"
+  network   = "${local.network_self_link}"
   priority  = 200
-  project = "${local.project_id}"
+  project   = "${local.project_id}"
 
   deny {
     protocol = "icmp"
@@ -47,6 +48,6 @@ resource "google_compute_firewall" "d_all_to_forseti_client" {
   ]
 
   target_service_accounts = [
-    "${local.client_service_account}"
+    "${local.client_service_account}",
   ]
 }

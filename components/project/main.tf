@@ -3,7 +3,7 @@ resource "random_id" "string" {
 }
 
 resource "google_project" "forseti" {
-  name                = "${local.forseti_project_name}"
+  name = "${local.forseti_project_name}"
 
   auto_create_network = "false"
   billing_account     = "${local.billing_account}"
