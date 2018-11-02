@@ -1,7 +1,8 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../project"
+      "../project",
+      "../networking",
     ]
   }
 
