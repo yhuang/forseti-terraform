@@ -7,7 +7,6 @@ apis = [
   "cloudbilling.googleapis.com",
   "cloudresourcemanager.googleapis.com",
   "deploymentmanager.googleapis.com",
-  "iam.googleapis.com",
   "pubsub.googleapis.com",
   "servicemanagement.googleapis.com",
   "servicenetworking.googleapis.com",
@@ -24,6 +23,9 @@ apis = [
 
   "container.googleapis.com",
   "containerregistry.googleapis.com",
+
+  "iam.googleapis.com",
+  "iamcredentials.googleapis.com",
 ]
 
 availability_zones = {
